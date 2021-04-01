@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/*
+    Author: @davdevelopment
+    March 2021
+*/
+
+@font-face {
+    font-family: 'Avenir';
+    src: url(../fonts/Avenir-Black.ttf) format('truetype');
+    font-weight: 900;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url(../fonts/Avenir-Heavy.ttf) format('truetype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url(../fonts/Avenir-Regular.ttf) format('truetype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url(../fonts/Avenir-Book.ttf) format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url(../fonts/Avenir-Light.ttf) format('truetype');
+    font-weight: 100;
+}
+
+:root {
+    --gray-middle: #D1CFCF;
+    --gray-clear: #EFEFEF;
+    --gray-dark: #666666;
+    --blue-middle: #3574AD;
+    --blue-dark: #214B93;
+}
+
+/* GENERAL */
+* {color: var(--gray-dark);}
+a {text-decoration: none;}
+.bg-gray-middle {background-color: var(--gray-middle);}
+.bg-gray-clear {background-color: var(--gray-clear);}
+
+/* TOP MENU */
+.top-menu {padding-top: 10px; padding-bottom: 10px;}
+.top-menu div {border-right: 1px solid #666666; padding: 0 15px;}
+.top-menu div:last-child {border-right: 0;}
+.top-menu ul {padding-left: 10px; margin-bottom: 0;}
+.top-menu li {line-height: 1em; list-style: none;}
+.top-menu a {color: var(--blue-dark); display: inline-block; font-size: .85em; font-weight: 900; transition: all linear .3s;}
+.top-menu a:hover {opacity: 0.7;}
+.top-menu img {height: 35px; object-fit: cover; width: 40px;}

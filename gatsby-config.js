@@ -30,8 +30,8 @@ module.exports = {
         url:
           process.env.WPGRAPHQL_URL ||
           `http://multiasistir.local/graphql`,
-        debug: {
-          throwRefetchErrors: true,
+        html: {
+          createStaticFiles: true,
         },
       },
     },
