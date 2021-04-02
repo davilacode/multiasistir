@@ -1,5 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 const TopMenu = () => {
 
@@ -9,46 +10,7 @@ const TopMenu = () => {
                 ACFTopMenu: { eMail, socialMedia, phones}
             },
         }
-    } = useStaticQuery(graphql`
-        query TopMenuQuery {
-            wp {
-            siteGeneralSettings {
-                ACFTopMenu {
-                socialMedia {
-                    socialNetwork {
-                    meta
-                    url
-                    icon {
-                        localFile {
-                        publicURL
-                        }
-                    }
-                    }
-                }
-                eMail {
-                    eMail
-                    meta
-                    icon {
-                    localFile {
-                        publicURL
-                    }
-                    }
-                }
-                phones {
-                    meta
-                    phonesNumber {
-                    phone
-                    }
-                    icon {
-                    localFile {
-                        publicURL
-                    }
-                    }
-                }
-                }
-            }
-            }
-    }`)
+    } = useStaticQuery(query)
 
     return(
         <nav className="navbar navbar-expand-lg bg-gray-middle">
@@ -58,14 +20,14 @@ const TopMenu = () => {
                         { 
                             socialMedia[0].socialNetwork.map(( social, key) => {
                                 return (
-                                    <li key={key}> <a href={social.url} target={`_blank`} rel={`noreferrer noopener`} title={social.meta} > <img src={social.icon.localFile.publicURL} alt={social.meta} /></a></li>
+                                    <li key={key}> <a href={social.url} target={`_blank`} rel={`noreferrer noopener`} title={social.meta} > <Img fixed={social.icon.localFile.childImageSharp.fixed} alt={social.meta} /></a></li>
                                 )
                             }) 
                         }
                     </ul>
                 </div>
                 <div className="d-flex align-items-center ">
-                    <img src={phones[0].icon.localFile.publicURL} alt={phones[0].meta} />
+                    <Img fixed={phones[0].icon.localFile.childImageSharp.fixed} alt={phones[0].meta} />
                     <ul>
                         {
                             phones[0].phonesNumber.map(( item, key) => {
@@ -77,7 +39,7 @@ const TopMenu = () => {
                     </ul>
                 </div>
                 <div className="d-flex align-items-center ">
-                    <img src={eMail[0].icon.localFile.publicURL} alt={eMail[0].meta} />
+                    <Img fixed={eMail[0].icon.localFile.childImageSharp.fixed} alt={eMail[0].meta} />
                     <ul>
                         <li><a href={`mailto:${eMail[0].eMail}`} title={eMail[0].meta}>{eMail[0].eMail}</a></li>
                     </ul>
@@ -88,3 +50,56 @@ const TopMenu = () => {
 }
 
 export default TopMenu
+
+const query = graphql`
+query TopMenuQuery {
+    wp {
+    siteGeneralSettings {
+        ACFTopMenu {
+        socialMedia {
+            socialNetwork {
+            meta
+            url
+            icon {
+                localFile {
+                    childImageSharp {
+                        fixed(width: 50, height: 50) {
+                            ...GatsbyImageSharpFixed
+                        }
+                    }
+                }
+            }
+            }
+        }
+        eMail {
+            eMail
+            meta
+            icon {
+            localFile {
+                childImageSharp {
+                    fixed(width: 50, height: 50) {
+                        ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+            }
+        }
+        phones {
+            meta
+            phonesNumber {
+            phone
+            }
+            icon {
+            localFile {
+                childImageSharp {
+                    fixed(width: 50, height: 50) {
+                        ...GatsbyImageSharpFixed
+                    }
+                }
+            }
+            }
+        }
+        }
+    }
+    }
+}`

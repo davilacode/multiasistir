@@ -26,7 +26,7 @@ const BlogIndex = ({
   }
 
   return (
-    <Layout isHomePage>
+    <Layout>
       <SEO title="All posts" />
 
       <Bio />
