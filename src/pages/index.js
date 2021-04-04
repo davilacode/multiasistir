@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { graphql } from "gatsby"
-import WOW from 'wowjs';
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,13 +7,18 @@ import Banners from "../components/banners"
 import Services from "../components/homeServices"
 
 const Home = ({ data, location }) => {
+  let WOW;
+  useEffect(() => {
+    let WOW = require("wowjs");
+    new WOW.WOW({live: false, animateClass: 'animate__animated'}).init();
+  }, []);
 
   useEffect(() => {
-    new WOW.WOW({
-        live: false
-    }).init();
-  }, [])
-  
+    if (WOW) {
+      WOW.sync();
+    }
+  });
+
   const siteTitle = data.site.siteMetadata.title
   const homeServices = data.allWpPage.nodes
 
