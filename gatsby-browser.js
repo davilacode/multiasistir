@@ -1,5 +1,6 @@
 /* CSS */
 import "bootstrap/dist/css/bootstrap.min.css";
+import "animate.css/animate.min.css";
 import "./src/assets/css/style.css"
 
 /* JS */

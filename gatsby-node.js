@@ -14,6 +14,7 @@ const chunk = require(`lodash/chunk`)
 exports.createPages = async gatsbyUtilities => {
   // Query our posts from the GraphQL server
   const posts = await getPosts(gatsbyUtilities)
+  const services = await getServices(gatsbyUtilities)
 
   // If there are no posts in WordPress, don't do anything
   if (!posts.length) {
@@ -25,6 +26,10 @@ exports.createPages = async gatsbyUtilities => {
 
   // And a paginated archive
   await createBlogPostArchive({ posts, gatsbyUtilities })
+
+  // Services
+  await createServices({ gatsbyUtilities })
+  await createService({ services, gatsbyUtilities })
 }
 
 /**
@@ -38,7 +43,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
       gatsbyUtilities.actions.createPage({
         // Use the WordPress uri as the Gatsby page path
         // This is a good idea so that internal links and menus work 👍
-        path: post.uri,
+        path: `blog${post.uri}`,
 
         // use the blog post template as the page component
         component: path.resolve(`./src/templates/blog-post.js`),
@@ -121,6 +126,45 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
   )
 }
 
+
+async function createServices({gatsbyUtilities }) {
+  return await gatsbyUtilities.actions.createPage({
+    path: `/servicios`,
+
+    // use the blog post archive template as the page component
+    component: path.resolve(`./src/templates/services.js`),
+
+    // `context` is available in the template as a prop and
+    // as a variable in GraphQL.
+  })
+}
+
+const createService = async ({ services, gatsbyUtilities }) =>
+  Promise.all(
+    services.map(( service ) =>
+    
+      // createPage is an action passed to createPages
+      // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+      gatsbyUtilities.actions.createPage({
+        // Use the WordPress uri as the Gatsby page path
+        // This is a good idea so that internal links and menus work 👍
+        path: `${service.node.uri}`,
+
+        // use the blog post template as the page component
+        component: path.resolve(`./src/templates/service.js`),
+
+        // `context` is available in the template as a prop and
+        // as a variable in GraphQL.
+        context: {
+          // we need to add the post id here
+          // so our blog post template knows which blog post
+          // the current page is (when you open it in a browser)
+          id: service.node.id
+        },
+      })
+    )
+  )
+
 /**
  * This function queries Gatsby's GraphQL server and asks for
  * All WordPress blog posts. If there are any GraphQL error it throws an error
@@ -163,4 +207,29 @@ async function getPosts({ graphql, reporter }) {
   }
 
   return graphqlResult.data.allWpPost.edges
+}
+
+async function getServices({ graphql, reporter }) {
+  const graphqlResult = await graphql(/* GraphQL */ `
+    query ServicesQuery {
+      allWpPage(filter: {parentDatabaseId: {eq: 90}}) {
+        edges {
+          node {
+            id
+            uri
+          }
+        }
+      }
+    }
+  `)
+
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      graphqlResult.errors
+    )
+    return
+  }
+
+  return graphqlResult.data.allWpPage.edges
 }

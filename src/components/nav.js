@@ -24,7 +24,7 @@ const Nav = () => {
 			<TopMenu />
 			<nav className="navbar navbar-expand-lg">
 				<div className="container">
-					<Link to="/" className="navbar-brand"><Img fixed={logo.localFile.childImageSharp.fixed} alt={parse(title)}/></Link>
+					<Link to="/" className="navbar-brand"><Img fixed={logo.localFile.childImageSharp.fixed} alt={parse(title)} /></Link>
 					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primeryMenu" aria-controls="primeryMenu" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
@@ -65,7 +65,7 @@ query LogoAndGeneralQuery {
 						localFile {
 							childImageSharp {
 								fixed(width: 60) {
-									...GatsbyImageSharpFixed
+									...GatsbyImageSharpFixed_noBase64
 								}
 							}
 						}
@@ -75,7 +75,7 @@ query LogoAndGeneralQuery {
 					localFile {
 						childImageSharp {
                             fixed(width: 200) {
-                                ...GatsbyImageSharpFixed
+                                ...GatsbyImageSharpFixed_noBase64
                             }
                         }
 					}

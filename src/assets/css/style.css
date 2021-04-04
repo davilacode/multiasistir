@@ -42,15 +42,26 @@
 /* GENERAL */
 * {color: var(--gray-dark);}
 a {text-decoration: none;}
+
+/*BG*/
 .bg-gray-middle {background-color: var(--gray-middle);}
 .bg-gray-clear {background-color: var(--gray-clear);}
 
+/*TEXT*/
+.txt-blue-middle {color: var(--blue-middle);}
+
 /* TOP MENU */
 .top-menu {padding-top: 10px; padding-bottom: 10px;}
-.top-menu div {border-right: 1px solid #666666; padding: 0 15px;}
-.top-menu div:last-child {border-right: 0;}
+.top-menu > div {border-right: 1px solid #666666; padding: 0 15px;}
+.top-menu > div:last-child {border-right: 0;}
 .top-menu ul {padding-left: 10px; margin-bottom: 0;}
 .top-menu li {line-height: 1em; list-style: none;}
 .top-menu a {color: var(--blue-dark); display: inline-block; font-size: .85em; font-weight: 900; transition: all linear .3s;}
 .top-menu a:hover {opacity: 0.7;}
 .top-menu img {height: 35px; object-fit: cover; width: 40px;}
+
+/* HOME SERVICES */
+.wrap_home_services {padding: 100px 0 60px;}
+.wrap_home_services a > div {height: 100%; padding: 32px;}
+.wrap_home_services a > div > div{width: 100%;}
+.wrap_home_services a > div h3 {font-weight: bold; margin-bottom: 0; padding: 15px 0;}

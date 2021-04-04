@@ -14,7 +14,7 @@ const BlogIndex = ({
 
   if (!posts.length) {
     return (
-      <Layout isHomePage>
+      <Layout>
         <SEO title="All posts" />
         <Bio />
         <p>
@@ -44,7 +44,7 @@ const BlogIndex = ({
               >
                 <header>
                   <h2>
-                    <Link to={post.uri} itemProp="url">
+                    <Link to={`/blog${post.uri}`} itemProp="url">
                       <span itemProp="headline">{parse(title)}</span>
                     </Link>
                   </h2>

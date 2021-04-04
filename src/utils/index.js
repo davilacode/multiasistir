@@ -9,7 +9,7 @@
     const { url, connectedObject } = menuItem
 
     /** Always want to pull of our API URL */
-    let newUri = url.replace(wordPressUrl, '');
+    let newUri = url.replace(wordPressUrl, '').replace('inicio/', '');
   
     /** If it's a blog link, respect the users blogURI setting */
     if (connectedObject && connectedObject.__typename === 'WPGraphQL_Post') {

@@ -64,7 +64,7 @@ query TopMenuQuery {
                 localFile {
                     childImageSharp {
                         fixed(width: 50, height: 50) {
-                            ...GatsbyImageSharpFixed
+                            ...GatsbyImageSharpFixed_noBase64
                         }
                     }
                 }
@@ -78,7 +78,7 @@ query TopMenuQuery {
             localFile {
                 childImageSharp {
                     fixed(width: 50, height: 50) {
-                        ...GatsbyImageSharpFixed
+                        ...GatsbyImageSharpFixed_noBase64
                     }
                 }
             }
@@ -93,7 +93,7 @@ query TopMenuQuery {
             localFile {
                 childImageSharp {
                     fixed(width: 50, height: 50) {
-                        ...GatsbyImageSharpFixed
+                        ...GatsbyImageSharpFixed_noBase64
                     }
                 }
             }
