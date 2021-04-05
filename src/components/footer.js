@@ -9,20 +9,20 @@ const Footer = () => {
     const socialMedia = data.wp.siteGeneralSettings.ACFTopMenu.socialMedia[0].socialNetwork
 
     return (
-        <footer className="bg-gray-clear py-5">
+        <footer className="wrap_footer bg-gray-clear pb-4">
             <div className="container">
                 <div className="row footer-menu pb-4 mb-4">
                     <div className="col-md-3" >
-                        <h4>Servicios</h4>
+                        <strong>Servicios</strong>
                     </div>
                     <div className="col-md-3" >
-                        <h4>Políticas</h4>
+                        <strong>Políticas</strong>
                     </div>
                     <div className="col-md-3" >
-                        <h4>Nosotros</h4>
+                        <strong>Nosotros</strong>
                     </div>
                     <div className="col-md-3" >
-                        <h4>Contacto</h4>
+                        <strong>Contacto</strong>
                     </div>
                 </div>
                 <div className="row align-items-center">
