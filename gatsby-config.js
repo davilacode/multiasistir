@@ -29,7 +29,7 @@ module.exports = {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `http://multiasistir.local/graphql`,
+          `https://api.multiasistir.com/graphql`,
         html: {
           createStaticFiles: true,
         },

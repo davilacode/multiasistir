@@ -32,8 +32,8 @@ const Nav = () => {
 					{ capacitacion && 
 						capacitacion.map((link, i) => (
 							<div key={i}>
-								<a href={link.url} target={`_blank`} rel={`noreferrer noopener`} title={parse(link.label)}>
-									<Img fixed={link.icon.localFile.childImageSharp.fixed} alt={parse(link.label)}/>
+								<a className="align-items-center d-flex " href={link.url} target={`_blank`} rel={`noreferrer noopener`} title={parse(link.label)}>
+									<Img className="me-2" fixed={link.icon.localFile.childImageSharp.fixed} alt={parse(link.label)}/>
 									<span>{parse(link.label)}</span>
 								</a>
 							</div>
