@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Banners from "../components/banners"
 import Services from "../components/homeServices"
+import Pac from "../components/pacSection"
 
 const Home = ({ data, location }) => {
   let WOW;
@@ -27,6 +28,7 @@ const Home = ({ data, location }) => {
       <SEO title="Inicio" lang="es"/>
       <Banners />
       <Services data={homeServices} />
+      <Pac />
     </Layout>
   )
 }

@@ -42,6 +42,8 @@
 /* GENERAL */
 * {color: var(--gray-dark);}
 a {text-decoration: none;}
+.btn-link {background-color: var(--blue-middle); color: #fff; display: block; font-weight: bold; padding: 5px 25px; text-decoration: none; transition: linear all .3s; text-transform: uppercase; width: max-content;}
+.btn-link:hover {background-color: var(--gray-dark); color: #fff;}
 
 /* BG */
 .bg-gray-middle {background-color: var(--gray-middle);}
@@ -78,3 +80,7 @@ a {text-decoration: none;}
 .wrap_home_services a > div {height: 100%; padding: 32px;}
 .wrap_home_services a > div > div{width: 100%;}
 .wrap_home_services a > div h3 {font-weight: bold; margin-bottom: 0; padding: 15px 0;}
+
+/* PAC Section */
+.wrap_pac_services {background-color: var(--gray-clear); position: relative; overflow: hidden;}
+.wrap_pac_services > .gatsby-image-wrapper {height: 100%; left: 0; position: absolute !important; top:0; width: 50%;}
