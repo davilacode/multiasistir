@@ -43,11 +43,11 @@
 * {color: var(--gray-dark);}
 a {text-decoration: none;}
 
-/*BG*/
+/* BG */
 .bg-gray-middle {background-color: var(--gray-middle);}
 .bg-gray-clear {background-color: var(--gray-clear);}
 
-/*TEXT*/
+/* TEXT */
 .txt-blue-middle {color: var(--blue-middle);}
 
 /* TOP MENU */
@@ -59,6 +59,19 @@ a {text-decoration: none;}
 .top-menu a {color: var(--blue-dark); display: inline-block; font-size: .85em; font-weight: 900; transition: all linear .3s;}
 .top-menu a:hover {opacity: 0.7;}
 .top-menu img {height: 35px; object-fit: cover; width: 40px;}
+
+/* MAIN MENU */
+.menu-item {margin: 0 15px;} 
+.menu-item a {color: var(--gray-dark); position: relative; text-transform: uppercase; transition: all .3s linear;} 
+.menu-item a:hover {color: var(--blue-middle);} 
+.menu-item a.active {color: var(--blue-middle); font-weight: bold;} 
+.menu-item a:before {background: var(--blue-middle); bottom: -8px; content: ''; height: 3px; left: 0; transition: all .3s ease-out; position: absolute; width: 0;} 
+.menu-item a:hover:before,
+.menu-item a.active:before {width: 100%;} 
+
+/* BANNERS */
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {background-color: var(--gray-dark); padding: 50px 0;}
 
 /* HOME SERVICES */
 .wrap_home_services {padding: 100px 0 60px;}
