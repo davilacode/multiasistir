@@ -14,7 +14,7 @@ const Banners = () => {
 
     return (
         <div>
-            <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+            <div id="homeBanner" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
                     { bannersHome && bannersHome.map((banner, i) => (
                         <div className={`carousel-item ${i === 0 ? 'active' : ''}`} key={i}>
@@ -22,11 +22,11 @@ const Banners = () => {
                         </div>
                     ))}
                 </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <button className="carousel-control-prev" type="button" data-bs-target="#homeBanner" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Previous</span>
                 </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <button className="carousel-control-next" type="button" data-bs-target="#homeBanner" data-bs-slide="next">
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Next</span>
                 </button>
