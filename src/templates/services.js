@@ -42,7 +42,7 @@ const Services = ({data}) => {
                     </figure>
                     <Link className={`col-md-7 py-4 px-5 order-${index % 2 === 0 ? "2" : "1"}`} to={`${service.uri}`} itemProp="url">
                       <h2>{parse(title)}</h2>
-                      <p className="py-4">{parse(service.content)}</p>
+                      {parse(service.content)}
                       <span className="btn-link m-auto">Más info</span>
                     </Link>
                     

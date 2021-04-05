@@ -111,7 +111,7 @@ section { overflow: hidden;}
 .services-list li article {background-color: var(--gray-clear);}
 .services-list li article h2 {color: var(--blue-middle); font-weight: bold; position: relative; text-transform: uppercase; text-align: center;}
 .services-list li article h2:after {background-color: var(--blue-middle); bottom: -15px; content: ""; height: 2px; left: calc(50% - 50px); position: absolute; width: 100px;}
-.services-list li article p {font-size: 1.2em; font-weight: 600;}
+.services-list li article p {font-size: 1.2em; font-weight: 600; padding: 1.5rem 0 !important;}
 
 /* COVID SERVICES */
 .wrap_covid_services {background-color: var(--blue-middle); padding-top: 50px; padding-bottom: 50px; overflow: inherit;}

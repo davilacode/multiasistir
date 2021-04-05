@@ -45,7 +45,7 @@ const CovidServices = () => {
                         </button>
                     </div>
                 </div>
-                <div className="modal fade" id="ModalExamAgenda" tabindex="-1" aria-labelledby="ModalExamAgendaLabel" aria-hidden="true">
+                <div className="modal fade" id="ModalExamAgenda" tabIndex="-1" aria-labelledby="ModalExamAgendaLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
