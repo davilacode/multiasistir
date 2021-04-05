@@ -7,8 +7,6 @@ const Pac = () => {
     
     const data = useStaticQuery(imageQuery);
 
-    console.log(data)
-
     return(
         <section className="wrap_pac_services">
             <Img className="wow animate__fadeInLeft" fluid={data.banner.childImageSharp.fluid} alt="Plan de atención Complementaria"/>
