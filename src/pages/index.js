@@ -3,8 +3,11 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Banners from "../components/banners"
-import Services from "../components/homeServices"
+
+import Banners from "../components/home/banners"
+import Services from "../components/home/homeServices"
+import Pac from "../components/home/pacSection"
+import Pbs from "../components/home/pbsSection"
 
 const Home = ({ data, location }) => {
   let WOW;
@@ -27,6 +30,8 @@ const Home = ({ data, location }) => {
       <SEO title="Inicio" lang="es"/>
       <Banners />
       <Services data={homeServices} />
+      <Pac />
+      <Pbs />
     </Layout>
   )
 }
