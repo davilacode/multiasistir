@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import Banners from "../components/banners"
 import Services from "../components/homeServices"
 import Pac from "../components/pacSection"
+import Pbs from "../components/pbsSection"
 
 const Home = ({ data, location }) => {
   let WOW;
@@ -29,6 +30,7 @@ const Home = ({ data, location }) => {
       <Banners />
       <Services data={homeServices} />
       <Pac />
+      <Pbs />
     </Layout>
   )
 }

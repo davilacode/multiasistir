@@ -1,7 +1,6 @@
 import React from 'react'
 import Img from "gatsby-image"
 import { useStaticQuery, graphql, Link } from "gatsby"
-// import parse from "html-react-parser"
 
 const Pac = () => {
     
