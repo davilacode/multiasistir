@@ -7,6 +7,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import TitleIntern from "../components/titleIntern"
 
+import CovidServices from "../components/services/covidServices"
+
 const Services = ({data}) => {
 
   const detail = data.wpPage
@@ -51,6 +53,7 @@ const Services = ({data}) => {
           </ol>
         </div>
       </div>
+      <CovidServices />
     </Layout>
   )
 }

@@ -9,7 +9,7 @@ const Footer = () => {
     const socialMedia = data.wp.siteGeneralSettings.ACFTopMenu.socialMedia[0].socialNetwork
 
     return (
-        <footer className="bg-gray-clear py-5">
+        <footer className="wrap_footer bg-gray-clear pb-4">
             <div className="container">
                 <div className="row footer-menu pb-4 mb-4">
                     <div className="col-md-3" >
