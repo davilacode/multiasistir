@@ -27,11 +27,13 @@ const Footer = () => {
                     </div>
                     <div className="col-md-3" >
                         <strong>Nosotros</strong>
-                        <li><a href={`/nosotros`} title={`Reseña Histórica`}>Reseña Histórica</a></li>
-                        <li><a href={`/nosotros`} title={`Misión`}>Misión</a></li>
-                        <li><a href={`/nosotros`} title={`Visión`}>Visión</a></li>
-                        <li><a href={`/nosotros`} title={`Principios Institucionales`}>Principios Institucionales</a></li>
-                        <li><a href={`/nosotros`} title={`Valores organizacionales`}>Valores organizacionales</a></li>
+                        <ul>
+                            <li><a href={`/nosotros`} title={`Reseña Histórica`}>Reseña Histórica</a></li>
+                            <li><a href={`/nosotros`} title={`Misión`}>Misión</a></li>
+                            <li><a href={`/nosotros`} title={`Visión`}>Visión</a></li>
+                            <li><a href={`/nosotros`} title={`Principios Institucionales`}>Principios Institucionales</a></li>
+                            <li><a href={`/nosotros`} title={`Valores organizacionales`}>Valores organizacionales</a></li>
+                        </ul>
                     </div>
                     <div className="col-md-3" >
                         <strong>Contacto</strong>
