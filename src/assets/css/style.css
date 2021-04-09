@@ -43,6 +43,7 @@
 * {color: var(--gray-dark);}
 a {text-decoration: none;}
 .btn-link {background-color: var(--blue-middle); color: #fff; display: block; font-weight: bold; padding: 5px 25px; text-decoration: none; transition: linear all .3s; text-transform: uppercase; width: max-content;}
+#whatsapp {position: fixed;right: -16px;top: 300px; z-index: 1000;}
 .btn-link:hover {background-color: var(--gray-dark); color: #fff;}
 section { overflow: hidden;}
 .wrap-social {margin: 0;}
@@ -102,6 +103,8 @@ section { overflow: hidden;}
 /* FOOTER */
 .wrap_footer {padding-top: 100px;}
 .footer-menu {border-bottom: 1px solid #666;}
+.footer-menu ul {list-style: none; margin-top: 15px; padding-left: 0;}
+.footer-menu ul a {color: var(--gray-dark)}
 .footer-menu strong {text-transform: uppercase;}
 
 /* INTENRS */

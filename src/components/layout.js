@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import Nav from './nav'
 import Footer from './footer'
+import Whatsapp from "./whatsapp"
 
 const Layout = ({ isHomePage, children }) => {
 
@@ -19,7 +20,10 @@ const Layout = ({ isHomePage, children }) => {
   return (
     <div className="global-wrapper" data-is-root-path={isHomePage}>
       <Nav />
-      <main>{children}</main>
+      <main>
+        <Whatsapp />
+        {children}
+      </main>
       <Footer />
     </div>
   )
