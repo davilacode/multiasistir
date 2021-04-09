@@ -50,7 +50,7 @@ const query = graphql`
                 image {
                     localFile {
                         childImageSharp {
-                            fluid(maxWidth: 1920) {
+                            fluid(maxWidth: 1920, quality: 100) {
                                 ...GatsbyImageSharpFluid
                             }
                         }
