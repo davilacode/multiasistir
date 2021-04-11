@@ -86,7 +86,7 @@ const query = graphql`
                 }
             }
         }
-        services: allWpPage(filter: {parentDatabaseId: {eq: 90}}) {
+        services: allWpPage(filter: {parentDatabaseId: {eq: 90}}, sort: {fields: menuOrder}) {
             edges {
                 node {
                     id

@@ -17,8 +17,8 @@ const MenuItem = ({ menuItem, wordPressUrl }) => {
                     render={(data) => {
                             return (
                                 <>
-                                    {data[menuItem.label.toLowerCase()]?.childImageSharp?.fixed &&
-                                        <Img fixed={data[menuItem.label.toLowerCase()].childImageSharp.fixed} alt={menuItem.label} />
+                                    {data[menuItem.label.toLowerCase()]?.childImageSharp?.fluid &&
+                                        <Img fluid={data[menuItem.label.toLowerCase()].childImageSharp.fluid} alt={menuItem.label} />
                                     }
                                 </>
                             )
@@ -37,29 +37,36 @@ const iconQuery = graphql`
     query {
         inicio: file(name: {eq: "icon-inicio"}) {
             childImageSharp {
-                fixed (width: 35, height: 35){
-                    ...GatsbyImageSharpFixed_noBase64
+                fluid (maxWidth:40){
+                    ...GatsbyImageSharpFluid_noBase64
                 }
             }
         }
         servicios: file(name: {eq: "icon-servicios"}) {
             childImageSharp {
-                fixed (width: 35, height: 35){
-                    ...GatsbyImageSharpFixed_noBase64
+                fluid (maxWidth:40){
+                    ...GatsbyImageSharpFluid_noBase64
                 }
             }
         }
         noticias: file(name: {eq: "icon-noticias"}) {
             childImageSharp {
-                fixed (width: 35, height: 35){
-                    ...GatsbyImageSharpFixed_noBase64
+                fluid (maxWidth:40){
+                    ...GatsbyImageSharpFluid_noBase64
                 }
             }
         }
         contacto: file(name: {eq: "icon-contacto"}) {
             childImageSharp {
-                fixed (width: 35, height: 35){
-                    ...GatsbyImageSharpFixed_noBase64
+                fluid (maxWidth:40){
+                    ...GatsbyImageSharpFluid_noBase64
+                }
+            }
+        }
+        nosotros: file(name: {eq: "icon-nosotros"}) {
+            childImageSharp {
+                fluid (maxWidth:40){
+                    ...GatsbyImageSharpFluid_noBase64
                 }
             }
         }

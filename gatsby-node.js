@@ -30,6 +30,7 @@ exports.createPages = async gatsbyUtilities => {
   // Services
   await createServices({ gatsbyUtilities })
   await createService({ services, gatsbyUtilities })
+  await createUs({gatsbyUtilities})
 }
 
 /**
@@ -133,6 +134,18 @@ async function createServices({gatsbyUtilities }) {
 
     // use the blog post archive template as the page component
     component: path.resolve(`./src/templates/services.js`),
+
+    // `context` is available in the template as a prop and
+    // as a variable in GraphQL.
+  })
+}
+
+async function createUs({gatsbyUtilities }) {
+  return await gatsbyUtilities.actions.createPage({
+    path: `/nosotros`,
+
+    // use the blog post archive template as the page component
+    component: path.resolve(`./src/templates/us.js`),
 
     // `context` is available in the template as a prop and
     // as a variable in GraphQL.

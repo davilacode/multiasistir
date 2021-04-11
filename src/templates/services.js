@@ -28,7 +28,7 @@ const Services = ({data}) => {
           <ol className="services-list" style={{ listStyle: `none` }}>
             {services.map((service, index) => {
               const title = service.title
-              const image = service.featuredImage.node.localFile.childImageSharp.fluid
+              const image = service?.featuredImage?.node?.localFile?.childImageSharp?.fluid
 
               return (
                 <li className="container mb-4" key={service.uri}>
@@ -38,11 +38,13 @@ const Services = ({data}) => {
                     itemType="http://schema.org/Article"
                   >
                     <figure className={`col-md-5 mb-0 wow ${index % 2 === 0 ? "order-1 ps-0 animate__fadeInLeft" : "order-2 pe-0 animate__fadeInRight"}`}>
-                      <Img className={`${index % 2 !== 0 ? "ms-auto" : ""}`} fluid={image} alt={title}/>
+                      {image &&
+                        <Img className={`${index % 2 !== 0 ? "ms-auto" : ""}`} fluid={image} alt={title}/>
+                      }
                     </figure>
                     <Link className={`col-md-7 py-4 px-5 order-${index % 2 === 0 ? "2" : "1"}`} to={`${service.uri}`} itemProp="url">
                       <h2>{parse(title)}</h2>
-                      {parse(service.content)}
+                      {service.content && parse(service.content)}
                       <span className="btn-link m-auto">Más info</span>
                     </Link>
                     
@@ -62,7 +64,7 @@ export default Services
 
 export const pageQuery = graphql`
   query MyQuery {
-    allWpPage(filter: {parentDatabaseId: {eq: 90}}, sort: {order: ASC, fields: menuOrder}) {
+    allWpPage(filter: {parentDatabaseId: {eq: 90}}, sort: {order: ASC, fields: menuOrder}, limit: 3) {
       nodes {
         uri
         title

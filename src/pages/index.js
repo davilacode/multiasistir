@@ -34,7 +34,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allWpPage(filter: {parentDatabaseId: {eq: 90}}, sort: {order: ASC, fields: menuOrder}) {
+    allWpPage(filter: {parentDatabaseId: {eq: 90}}, sort: {order: ASC, fields: menuOrder}, limit: 3) {
       nodes {
         ACFLeadServices {
           text

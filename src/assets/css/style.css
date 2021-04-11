@@ -74,8 +74,12 @@ section { overflow: hidden;}
 /* MAIN MENU */
 .menu-item {margin: 0 15px;} 
 .menu-item a {color: var(--gray-dark); position: relative; text-transform: uppercase; transition: all .3s linear;} 
+.menu-item a .gatsby-image-wrapper {height: 40px; width: 40px;}
+.menu-item a img {object-position: center top !important; transition: all .3s ease-out !important;}
 .menu-item a:hover {color: var(--blue-middle);} 
+.menu-item a:hover img {object-position: center bottom !important;} 
 .menu-item a.active {color: var(--blue-middle); font-weight: bold;} 
+.menu-item a.active img {object-position: center bottom !important;} 
 .menu-item a:before {background: var(--blue-middle); bottom: -8px; content: ''; height: 3px; left: 0; transition: all .3s ease-out; position: absolute; width: 0;} 
 .menu-item a:hover:before,
 .menu-item a.active:before {width: 100%;} 
