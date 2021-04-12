@@ -185,31 +185,30 @@ async function createUs({ gatsbyUtilities }) {
   })
 }
 
-const createService = async ({ services, gatsbyUtilities }) =>
-  Promise.all(
-    services.map(( service ) =>
-    
-      // createPage is an action passed to createPages
-      // See https://www.gatsbyjs.com/docs/actions#createPage for more info
-      gatsbyUtilities.actions.createPage({
-        // Use the WordPress uri as the Gatsby page path
-        // This is a good idea so that internal links and menus work 👍
-        path: `${service.uri}`,
+async function createService({ services, gatsbyUtilities }) {
+  services.map(( service ) =>
+  
+    // createPage is an action passed to createPages
+    // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+    gatsbyUtilities.actions.createPage({
+      // Use the WordPress uri as the Gatsby page path
+      // This is a good idea so that internal links and menus work 👍
+      path: `${service.uri}`,
 
-        // use the blog post template as the page component
-        component: path.resolve(`./src/templates/service.js`),
+      // use the blog post template as the page component
+      component: path.resolve(`./src/templates/service.js`),
 
-        // `context` is available in the template as a prop and
-        // as a variable in GraphQL.
-        context: {
-          // we need to add the post id here
-          // so our blog post template knows which blog post
-          // the current page is (when you open it in a browser)
-          id: service.id
-        },
-      })
-    )
+      // `context` is available in the template as a prop and
+      // as a variable in GraphQL.
+      context: {
+        // we need to add the post id here
+        // so our blog post template knows which blog post
+        // the current page is (when you open it in a browser)
+        id: service.id
+      },
+    })
   )
+}
 
 /**
  * This function queries Gatsby's GraphQL server and asks for
