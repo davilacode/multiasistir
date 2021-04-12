@@ -29,8 +29,10 @@ const Us = ({data}) => {
 export default Us
 
 export const pageQuery = graphql`
-  query UsQuery {
-    wpPage(id: {eq: "cG9zdDoxNjU="}) {
+  query UsQuery (
+    $id: String
+  ){
+    wpPage(id: {eq: $id}) {
       uri
       title
       content

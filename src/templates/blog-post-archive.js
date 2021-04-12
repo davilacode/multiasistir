@@ -44,7 +44,7 @@ const BlogIndex = ({
               >
                 <header>
                   <h2>
-                    <Link to={`/blog${post.uri}`} itemProp="url">
+                    <Link to={`/noticias${post.uri}`} itemProp="url">
                       <span itemProp="headline">{parse(title)}</span>
                     </Link>
                   </h2>

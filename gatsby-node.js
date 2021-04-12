@@ -1,5 +1,6 @@
 const path = require(`path`)
 const chunk = require(`lodash/chunk`)
+const { graphql } = require("gatsby")
 
 // This is a simple debugging tool
 // dd() will prettily dump to the terminal and kill the process
@@ -27,7 +28,7 @@ exports.createPages = async gatsbyUtilities => {
   // And a paginated archive
   await createBlogPostArchive({ posts, gatsbyUtilities })
 
-  // Services
+  // Pages
   await createServices({ gatsbyUtilities })
   await createService({ services, gatsbyUtilities })
   await createUs({gatsbyUtilities})
@@ -44,7 +45,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
       gatsbyUtilities.actions.createPage({
         // Use the WordPress uri as the Gatsby page path
         // This is a good idea so that internal links and menus work 👍
-        path: `blog${post.uri}`,
+        path: `noticias${post.uri}`,
 
         // use the blog post template as the page component
         component: path.resolve(`./src/templates/blog-post.js`),
@@ -94,7 +95,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
           // we want the first page to be "/" and any additional pages
           // to be numbered.
           // "/blog/2" for example
-          return page === 1 ? `/blog` : `/blog/${page}`
+          return page === 1 ? `/noticias` : `/noticias/${page}`
         }
 
         return null
@@ -129,26 +130,58 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
 
 
 async function createServices({gatsbyUtilities }) {
-  return await gatsbyUtilities.actions.createPage({
-    path: `/servicios`,
+  const result = await gatsbyUtilities.graphql(`
+    query ServicesQuery {
+      wpPage(id: {eq: "cG9zdDo5MA=="}) {
+        id
+        uri
+      }
+    }
+  `)
 
-    // use the blog post archive template as the page component
+  if(result.errors){
+    reporter.error("There was an error fetching services page", result.errors)
+  }
+
+  const { wpPage } = result.data
+  
+  return await gatsbyUtilities.actions.createPage({
+    path: `${wpPage.uri}`,
+
     component: path.resolve(`./src/templates/services.js`),
 
-    // `context` is available in the template as a prop and
-    // as a variable in GraphQL.
+    context: {
+      id: wpPage.id,
+      parentId: wpPage.id
+    }
   })
 }
 
-async function createUs({gatsbyUtilities }) {
-  return await gatsbyUtilities.actions.createPage({
-    path: `/nosotros`,
+async function createUs({ gatsbyUtilities }) {
 
-    // use the blog post archive template as the page component
+  const result = await gatsbyUtilities.graphql(`
+    query UsQuery {
+      wpPage(id: {eq: "cG9zdDoxNjU="}) {
+        id
+        uri
+      }
+    }
+  `)
+
+  if(result.errors){
+    reporter.error("There was an error fetching us page", result.errors)
+  }
+
+  const { wpPage } = result.data
+  
+  return await gatsbyUtilities.actions.createPage({
+    path: `${wpPage.uri}`,
+
     component: path.resolve(`./src/templates/us.js`),
 
-    // `context` is available in the template as a prop and
-    // as a variable in GraphQL.
+    context: {
+      id: wpPage.id
+    }
   })
 }
 
@@ -161,7 +194,7 @@ const createService = async ({ services, gatsbyUtilities }) =>
       gatsbyUtilities.actions.createPage({
         // Use the WordPress uri as the Gatsby page path
         // This is a good idea so that internal links and menus work 👍
-        path: `${service.node.uri}`,
+        path: `${service.uri}`,
 
         // use the blog post template as the page component
         component: path.resolve(`./src/templates/service.js`),
@@ -172,7 +205,7 @@ const createService = async ({ services, gatsbyUtilities }) =>
           // we need to add the post id here
           // so our blog post template knows which blog post
           // the current page is (when you open it in a browser)
-          id: service.node.id
+          id: service.id
         },
       })
     )
@@ -186,6 +219,8 @@ const createService = async ({ services, gatsbyUtilities }) =>
  * We're passing in the utilities we got from createPages.
  * So see https://www.gatsbyjs.com/docs/node-apis/#createPages for more info!
  */
+
+
 async function getPosts({ graphql, reporter }) {
   const graphqlResult = await graphql(/* GraphQL */ `
     query WpPosts {
@@ -223,14 +258,12 @@ async function getPosts({ graphql, reporter }) {
 }
 
 async function getServices({ graphql, reporter }) {
-  const graphqlResult = await graphql(/* GraphQL */ `
+  const graphqlResult = await graphql(`
     query ServicesQuery {
-      allWpPage(filter: {parentDatabaseId: {eq: 90}}) {
-        edges {
-          node {
-            id
-            uri
-          }
+      allWpPage(filter: {parentId: {eq: "cG9zdDo5MA=="}}) {
+        nodes {
+          id
+          uri
         }
       }
     }
@@ -238,11 +271,11 @@ async function getServices({ graphql, reporter }) {
 
   if (graphqlResult.errors) {
     reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
+      `There was an error loading your services pages`,
       graphqlResult.errors
     )
     return
   }
 
-  return graphqlResult.data.allWpPage.edges
+  return graphqlResult.data.allWpPage.nodes
 }

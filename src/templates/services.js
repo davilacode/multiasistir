@@ -63,8 +63,11 @@ const Services = ({data}) => {
 export default Services
 
 export const pageQuery = graphql`
-  query MyQuery {
-    allWpPage(filter: {parentDatabaseId: {eq: 90}}, sort: {order: ASC, fields: menuOrder}, limit: 3) {
+  query ServicesQuery (
+    $id: String
+    $parentId: ID
+  ){
+    allWpPage(filter: {parentId: {eq: $parentId}}, sort: {order: ASC, fields: menuOrder}, limit: 3) {
       nodes {
         uri
         title
@@ -82,7 +85,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    wpPage(slug: {eq: "servicios"}) {
+    wpPage(id: {eq: $id}) {
       id
       uri
       title
