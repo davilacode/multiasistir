@@ -51,15 +51,23 @@ section { overflow: hidden;}
 
 .wrap_content ul {list-style: none;}
 .wrap_content ul li::before {content: "";background-color: var(--blue-middle); border-radius: 50%; font-weight: bold;display: inline-block;height: 9px; width: 9px;margin-right: 1em;}
+.wrap_content ul li {margin-bottom: 15px;}
+.wrap_content h2:not(.accordion-header) {color: var(--blue-middle); font-weight: bold; margin-bottom: 40px; position: relative; text-transform: uppercase; text-align: center;}
+.wrap_content h2:not(.accordion-header):after {background-color: var(--blue-middle); bottom: -15px; content: ""; height: 2px; left: calc(50% - 50px); position: absolute; width: 100px;}
+.wrap_content h2.txt-white:not(.accordion-header):after {background-color: #fff; bottom: -15px; content: ""; height: 2px; left: calc(50% - 50px); position: absolute; width: 100px;}
 
 /* BG */
 .bg-gray-middle {background-color: var(--gray-middle);}
 .bg-gray-clear {background-color: var(--gray-clear);}
 .bg-white {background-color: #fff;}
+.bg-blue-dark {background-color: var(--blue-dark);}
+.bg-blue-middle {background-color: var(--blue-middle) !important;}
 
 /* TEXT */
 .txt-blue-middle {color: var(--blue-middle);}
 .txt-blue-dark {color: var(--blue-dark);}
+.txt-white {color: #fff !important;}
+.txt-white > * {color: #fff !important;}
 
 /* TOP MENU */
 .top-menu {padding-top: 10px; padding-bottom: 10px;}
@@ -129,3 +137,16 @@ section { overflow: hidden;}
 .wrap_covid_services .split > div:nth-child(1) {border-right: 1px solid #fff;}
 .wrap_covid_services .link {margin-bottom: -110px; position: relative; z-index: 5;}
 .wrap_covid_services .link button {background: unset;border: unset;appearance: none;}
+
+/* US */
+.mision-title, .vision-title {position: relative;}
+.mision-title:before, .vision-title:before {content: ''; height: 80px; position: absolute; right: 50%; top: 50%; transform: translate(-80%, -20%); width: 80px;}
+.mision-title:before {background: url(../../../content/assets/icon-mision.png) no-repeat center / 100%;}
+.vision-title:before {background: url(../../../content/assets/icon-vision.png) no-repeat center / 100%;}
+
+.accordion .accordion-item {border-radius: 0 !important; border: 0;}
+.accordion .accordion-button {border-radius: 0 !important; font-weight: bold; font-size: 1em; text-transform: uppercase;}
+.accordion-button:focus {box-shadow: unset;}
+.accordion-button:not(.collapsed) {background-color: inherit;}
+.accordion-button::after {background: url(../../../content/assets/icon-arrow.png) no-repeat center / 2rem; height: 2rem; width: 2rem;}
+.accordion-button:not(.collapsed)::after {background: url(../../../content/assets/icon-arrow.png) no-repeat center / 2rem; transform: rotate(90deg);}
