@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
 /*
-    Author: @davdevelopment
+    MULTIASISTIR E.A.T
+    By: @davdevelopment
     March 2021
 */
 
@@ -150,3 +151,18 @@ section { overflow: hidden;}
 .accordion-button:not(.collapsed) {background-color: inherit;}
 .accordion-button::after {background: url(../../../content/assets/icon-arrow.png) no-repeat center / 2rem; height: 2rem; width: 2rem;}
 .accordion-button:not(.collapsed)::after {background: url(../../../content/assets/icon-arrow.png) no-repeat center / 2rem; transform: rotate(90deg);}
+
+/* NEWS */
+.list-news {list-style: none;}
+.list-news article {position: relative; overflow: hidden;}
+.list-news article header {display: flex; align-items: center; position: absolute; height: 100%; left: 0; top: 0; width: 50%;}
+.list-news article header h2 {font-weight: bold;}
+.list-news article section {animation-name: fadeOutDown; background: rgba(0,0,0,0.4); align-items: center; display: flex; justify-content: center; flex-flow: column; height: 100%; left: 0; position: absolute; top: 0; transition: all .5s ease-out; width: 100%;}
+.list-news article .title-news {display: block; font-size: 2em; font-weight: bold; margin-bottom: 15px; position: relative; text-transform: uppercase; text-align: center;} 
+.list-news article .title-news:after {background-color: #fff; bottom: -7px; content: ""; height: 2px; left: calc(50% - 50px); position: absolute; width: 100px;} 
+.list-news article .excerpt-news {font-size: 1.3em; margin-bottom: 2.5em; text-align: center;} 
+.list-news article:hover header h2 {animation-name: fadeOutLeft;}
+.list-news article:hover section {animation-name: fadeInUp;} 
+.list-news article:hover section .title-news {animation-name: fadeInUp; animation-delay: .5s;} 
+.list-news article:hover section .excerpt-news {animation-name: fadeInUp; animation-delay: .7s;} 
+.list-news article:hover section .btn-link {animation-name: fadeInUp; animation-delay: .9s;} 

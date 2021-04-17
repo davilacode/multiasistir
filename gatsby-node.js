@@ -77,6 +77,10 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
           postsPerPage
         }
       }
+      intern: wpPage(id: {eq: "cG9zdDoyMjE="}) {
+        id
+        uri
+      }
     }
   `)
 
@@ -95,7 +99,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
           // we want the first page to be "/" and any additional pages
           // to be numbered.
           // "/blog/2" for example
-          return page === 1 ? `/noticias` : `/noticias/${page}`
+          return page === 1 ? graphqlResult.data.intern.uri : `${graphqlResult.data.intern.uri}${page}`
         }
 
         return null
@@ -115,6 +119,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
           // the index of our loop is the offset of which posts we want to display
           // so for page 1, 0 * 10 = 0 offset, for page 2, 1 * 10 = 10 posts offset,
           // etc
+          id: graphqlResult.data.intern.id,
           offset: index * postsPerPage,
 
           // We need to tell the template how many posts to display too
