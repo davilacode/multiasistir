@@ -32,6 +32,7 @@ exports.createPages = async gatsbyUtilities => {
   await createServices({ gatsbyUtilities })
   await createService({ services, gatsbyUtilities })
   await createUs({gatsbyUtilities})
+  await createContact({gatsbyUtilities})
 }
 
 /**
@@ -183,6 +184,34 @@ async function createUs({ gatsbyUtilities }) {
     path: `${wpPage.uri}`,
 
     component: path.resolve(`./src/templates/us.js`),
+
+    context: {
+      id: wpPage.id
+    }
+  })
+}
+
+async function createContact({ gatsbyUtilities }) {
+
+  const result = await gatsbyUtilities.graphql(`
+    query ContactQuery {
+      wpPage(id: {eq: "cG9zdDoyMzk="}) {
+        id
+        uri
+      }
+    }
+  `)
+
+  if(result.errors){
+    reporter.error("There was an error fetching us page", result.errors)
+  }
+
+  const { wpPage } = result.data
+  
+  return await gatsbyUtilities.actions.createPage({
+    path: `${wpPage.uri}`,
+
+    component: path.resolve(`./src/pages/contact.js`),
 
     context: {
       id: wpPage.id

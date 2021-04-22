@@ -43,9 +43,9 @@
 /* GENERAL */
 * {color: var(--gray-dark);}
 a {text-decoration: none;}
-.btn-link {background-color: var(--blue-middle); color: #fff; display: block; font-weight: bold; padding: 5px 25px; text-decoration: none; transition: linear all .3s; text-transform: uppercase; width: max-content;}
-#whatsapp {position: fixed;right: -16px;top: 300px; z-index: 1000;}
+.btn-link {background-color: var(--blue-middle); border: 0; border-radius: 0; color: #fff; display: block; font-weight: bold; padding: 5px 25px; text-decoration: none; transition: linear all .3s; text-transform: uppercase; width: max-content;}
 .btn-link:hover {background-color: var(--gray-dark); color: #fff;}
+#whatsapp {position: fixed;right: -16px;top: 300px; z-index: 1000;}
 section { overflow: hidden;}
 .wrap-social {margin: 0;}
 .wrap-social li {list-style: none;}
@@ -172,3 +172,20 @@ section { overflow: hidden;}
 .list-news article:hover section .title-news {animation-name: fadeInUp; animation-delay: .5s;} 
 .list-news article:hover section .excerpt-news {animation-name: fadeInUp; animation-delay: .7s;} 
 .list-news article:hover section .btn-link {animation-name: fadeInUp; animation-delay: .9s;} 
+
+/* CONTACT */
+.data-contact {border-right: 1px solid var(--gray-middle);} 
+.data-contact > [class^="list"] {padding: 20px 0 20px 65px; margin-left: auto; max-width: 300px; position: relative;} 
+.data-contact > [class^="list"] * {color: var(--gray-dark); font-size: 1em; font-weight: bold; transition: all .3s linear;} 
+.data-contact > [class^="list"] a:hover {opacity: 0.7;} 
+.data-contact > [class^="list"]:after {content: ''; left: 0; padding: 25px; position: absolute; top: 50%; transform: translateY(-50%);} 
+.data-contact > .list-phones:after {background: url(../../../content/assets/icon-phone.png) no-repeat center / contain;} 
+.data-contact > .list-email:after {background: url(../../../content/assets/icon-email.png) no-repeat center / contain;} 
+.data-contact > .list-address:after {background: url(../../../content/assets/icon-location.png) no-repeat center / contain;} 
+
+/* FORM */
+.form-contact {padding: 0 70px;}
+.form-control {border: 0; border-bottom: 1px solid #ced4da; border-radius: 0;}
+.form-control:focus {box-shadow: unset; border-color: var(--gray-dark);}
+.form-control.is-invalid:focus {box-shadow: unset;}
+textarea.form-control {resize: none; height: 75px !important;}
