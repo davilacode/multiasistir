@@ -1,15 +1,14 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Image from "gatsby-image"
 import parse from "html-react-parser"
 
 // We're using Gutenberg so we need the block styles
 import "@wordpress/block-library/build-style/style.css"
 import "@wordpress/block-library/build-style/theme.css"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import TitleIntern from "../components/titleIntern"
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
@@ -20,65 +19,56 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   return (
     <Layout>
       <SEO title={post.title} description={post.excerpt} />
+      <TitleIntern title={post.title} image={featuredImage.fluid} date={post.date} excerpt={post.excerpt} />
+      <div className="container py-5">
+        <div className="row">
+          <div className="col-12">
+            <article
+              className="blog-post"
+              itemScope
+              itemType="http://schema.org/Article"
+            >
+              {!!post.content && (
+                <section itemProp="articleBody">{parse(post.content)}</section>
+              )}
 
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{parse(post.title)}</h1>
+              <hr />
 
-          <p>{post.date}</p>
+              <footer>
+              </footer>
+            </article>
+            <nav className="blog-post-nav">
+              <ul
+                style={{
+                  display: `flex`,
+                  flexWrap: `wrap`,
+                  justifyContent: `space-between`,
+                  listStyle: `none`,
+                  padding: 0,
+                }}
+              >
+                <li>
+                  {previous && (
+                    <Link to={`/noticias${previous.uri}`} rel="prev">
+                      ← {parse(previous.title)}
+                    </Link>
+                  )}
+                </li>
 
-          {/* if we have a featured image for this post let's display it */}
-          {featuredImage?.fluid && (
-            <Image
-              fluid={featuredImage.fluid}
-              alt={featuredImage.alt}
-              style={{ marginBottom: 50 }}
-            />
-          )}
-        </header>
+                <li>
+                  {next && (
+                    <Link to={`/noticias${next.uri}`} rel="next">
+                      {parse(next.title)} →
+                    </Link>
+                  )}
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
 
-        {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
-        )}
-
-        <hr />
-
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={`/noticias${previous.uri}`} rel="prev">
-                ← {parse(previous.title)}
-              </Link>
-            )}
-          </li>
-
-          <li>
-            {next && (
-              <Link to={`/noticias${next.uri}`} rel="next">
-                {parse(next.title)} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+      
     </Layout>
   )
 }
@@ -98,7 +88,7 @@ export const pageQuery = graphql`
       excerpt
       content
       title
-      date(formatString: "MMMM DD, YYYY")
+      date(formatString: "MMMM DD, YYYY", locale: "es")
 
       featuredImage {
         node {

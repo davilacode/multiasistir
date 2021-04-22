@@ -32,6 +32,7 @@ exports.createPages = async gatsbyUtilities => {
   await createServices({ gatsbyUtilities })
   await createService({ services, gatsbyUtilities })
   await createUs({gatsbyUtilities})
+  await createContact({gatsbyUtilities})
 }
 
 /**
@@ -48,7 +49,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
         path: `noticias${post.uri}`,
 
         // use the blog post template as the page component
-        component: path.resolve(`./src/templates/blog-post.js`),
+        component: path.resolve(`./src/templates/detail-news.js`),
 
         // `context` is available in the template as a prop and
         // as a variable in GraphQL.
@@ -77,6 +78,10 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
           postsPerPage
         }
       }
+      intern: wpPage(id: {eq: "cG9zdDoyMjE="}) {
+        id
+        uri
+      }
     }
   `)
 
@@ -95,7 +100,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
           // we want the first page to be "/" and any additional pages
           // to be numbered.
           // "/blog/2" for example
-          return page === 1 ? `/noticias` : `/noticias/${page}`
+          return page === 1 ? graphqlResult.data.intern.uri : `${graphqlResult.data.intern.uri}${page}`
         }
 
         return null
@@ -107,7 +112,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
         path: getPagePath(pageNumber),
 
         // use the blog post archive template as the page component
-        component: path.resolve(`./src/templates/blog-post-archive.js`),
+        component: path.resolve(`./src/templates/list-news.js`),
 
         // `context` is available in the template as a prop and
         // as a variable in GraphQL.
@@ -115,6 +120,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
           // the index of our loop is the offset of which posts we want to display
           // so for page 1, 0 * 10 = 0 offset, for page 2, 1 * 10 = 10 posts offset,
           // etc
+          id: graphqlResult.data.intern.id,
           offset: index * postsPerPage,
 
           // We need to tell the template how many posts to display too
@@ -185,30 +191,60 @@ async function createUs({ gatsbyUtilities }) {
   })
 }
 
-async function createService({ services, gatsbyUtilities }) {
-  services.map(( service ) =>
+async function createContact({ gatsbyUtilities }) {
+
+  const result = await gatsbyUtilities.graphql(`
+    query ContactQuery {
+      wpPage(id: {eq: "cG9zdDoyMzk="}) {
+        id
+        uri
+      }
+    }
+  `)
+
+  if(result.errors){
+    reporter.error("There was an error fetching us page", result.errors)
+  }
+
+  const { wpPage } = result.data
   
-    // createPage is an action passed to createPages
-    // See https://www.gatsbyjs.com/docs/actions#createPage for more info
-    gatsbyUtilities.actions.createPage({
-      // Use the WordPress uri as the Gatsby page path
-      // This is a good idea so that internal links and menus work 👍
-      path: `${service.uri}`,
+  return await gatsbyUtilities.actions.createPage({
+    path: `${wpPage.uri}`,
 
-      // use the blog post template as the page component
-      component: path.resolve(`./src/templates/service.js`),
+    component: path.resolve(`./src/pages/contact.js`),
 
-      // `context` is available in the template as a prop and
-      // as a variable in GraphQL.
-      context: {
-        // we need to add the post id here
-        // so our blog post template knows which blog post
-        // the current page is (when you open it in a browser)
-        id: service.id
-      },
-    })
-  )
+    context: {
+      id: wpPage.id
+    }
+  })
 }
+
+const createService = async ({ services, gatsbyUtilities }) =>
+  Promise.all(
+    services.map(( service ) =>
+    
+      // createPage is an action passed to createPages
+      // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+      gatsbyUtilities.actions.createPage({
+        // Use the WordPress uri as the Gatsby page path
+        // This is a good idea so that internal links and menus work 👍
+        path: `${service.uri}`,
+
+        // use the blog post template as the page component
+        component: path.resolve(`./src/templates/service.js`),
+
+        // `context` is available in the template as a prop and
+        // as a variable in GraphQL.
+        context: {
+          // we need to add the post id here
+          // so our blog post template knows which blog post
+          // the current page is (when you open it in a browser)
+          id: service.id
+        },
+      })
+    )
+  )
+
 
 /**
  * This function queries Gatsby's GraphQL server and asks for
