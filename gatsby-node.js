@@ -207,8 +207,6 @@ async function createContact({ gatsbyUtilities }) {
   }
 
   const { wpPage } = result.data
-
-  console.log(wpPage)
   
   return await gatsbyUtilities.actions.createPage({
     path: `${wpPage.uri}`,

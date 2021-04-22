@@ -35,6 +35,12 @@ module.exports = {
         },
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-apollo',
+    //   options: {
+    //     uri: `https://api.multiasistir.com/graphql`,
+    //   }
+    // },
 
     /**
      * We need this plugin so that it adds the "File.publicURL" to our site

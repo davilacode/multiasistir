@@ -24,7 +24,7 @@ const Contact = ({ data: { contact } }) => {
           <div className="col-md-5 data-contact">
             <div className="list-phones d-flex flex-column">
               {phones.map(({phone}, i) => (
-                <a href={`tel:+57${phone.replaceAll(' ', '')}`} key={i} title="Teléfono">{phone}</a>
+                <a href={`tel:+57${phone.replace(/ /g, '')}`} key={i} title="Teléfono">{phone}</a>
               ))}
             </div>
             <div className="list-email d-flex flex-column">
