@@ -48,7 +48,7 @@ export default Contact
 
 export const pageQuery = graphql`
   query ContactById(
-    $id: String!
+    $id: String
   ) {
     # selecting the current service by id
     contact: wpPage(id: { eq: $id }) {
