@@ -18,7 +18,7 @@ const Banners = () => {
                 <div className="carousel-inner">
                     { bannersHome && bannersHome.map((banner, i) => (
                         <div className={`carousel-item ${i === 0 ? 'active' : ''}`} key={i}>
-                            <Img fluid={banner.image.localFile.childImageSharp.fluid} className="d-block w-100" alt={banner.title} />
+                            <Img fluid={banner.image.localFile.childImageSharp.fluid} className={`d-block w-100 res-${banner.textAlign}`} alt={banner.title} />
                         </div>
                     ))}
                 </div>
@@ -47,6 +47,7 @@ const query = graphql`
                 html
                 link
                 title
+                textAlign
                 image {
                     localFile {
                         childImageSharp {

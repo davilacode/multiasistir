@@ -37,7 +37,7 @@ export const pageQuery = graphql`
     allWpPage(filter: {parentDatabaseId: {eq: 90}}, sort: {order: ASC, fields: menuOrder}, limit: 3) {
       nodes {
         ACFLeadServices {
-          text
+          leadHome
         }
         id
         uri
@@ -47,7 +47,7 @@ export const pageQuery = graphql`
           node {
             localFile {
               childImageSharp {
-                fluid (maxWidth: 350, quality: 100) {
+                fluid (maxWidth: 600, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }

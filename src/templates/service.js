@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Image from "gatsby-image"
 import parse from "html-react-parser"
 
 // We're using Gutenberg so we need the block styles
@@ -9,42 +8,27 @@ import "@wordpress/block-library/build-style/theme.css"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import TitleIntern from "../components/titleIntern"
 
 const Service = ({ data: { service } }) => {
 
   const featuredImage = {
-    fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-    alt: service.featuredImage?.node?.alt || ``,
+    fluid: service.ACFLeadServices?.banner?.localFile?.childImageSharp?.fluid
   }
 
   return (
     <Layout>
       <SEO title={service.title} description={service.excerpt} />
-
-      <article
-        className="blog-service"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{parse(service.title)}</h1>
-
-          {/* if we have a featured image for this service let's display it */}
-          {featuredImage?.fluid && (
-            <Image
-              fluid={featuredImage.fluid}
-              alt={featuredImage.alt}
-              style={{ marginBottom: 50 }}
-            />
-          )}
-        </header>
-
-        {!!service.content && (
-          <section itemProp="articleBody">{parse(service.content)}</section>
-        )}
-
-        <hr />
-      </article>
+      <TitleIntern title={service.title} image={featuredImage.fluid} />
+      <div className="wrap_content intern_services container py-5">
+        <div className="row">
+          <div className="col-12">
+            {!!service.content && (
+              <>{parse(service.content)}</>
+            )}
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -61,10 +45,8 @@ export const pageQuery = graphql`
       id
       content
       title
-
-      featuredImage {
-        node {
-          altText
+      ACFLeadServices {
+        banner {
           localFile {
             childImageSharp {
               fluid(maxWidth: 1920, quality: 100) {

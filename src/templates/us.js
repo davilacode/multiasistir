@@ -42,7 +42,7 @@ const Us = ({data}) => {
       </section>
       {videos && 
         <section className="bg-gray-clear">
-          <div className="wrap_content container py-5">
+          <div className="wrap_content container pt-5">
             <div className="row">
               <div className="col-12 pb-3">
                 <h2>Videos</h2>
@@ -51,7 +51,7 @@ const Us = ({data}) => {
                 let embedId = link.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)[1];
 
                 return (
-                  <div className="col-md-6" key={i}>
+                  <div className="col-md-6 pb-5" key={i}>
                     <iframe
                       width="100%"
                       height="480"
@@ -73,26 +73,26 @@ const Us = ({data}) => {
           <div className="row">
             <div className="col-12">
               <div className="accordion" id="accordionExample">
-                <div class="accordion-item pb-5">
-                  <h2 class="accordion-header txt-white" id="headingOne">
-                    <button class="accordion-button bg-blue-middle py-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <div className="accordion-item pb-5">
+                  <h2 className="accordion-header txt-white" id="headingOne">
+                    <button className="accordion-button bg-blue-middle py-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                       {principles.title}
                     </button>
                   </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                  <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
                       {parse(principles.text)}
                     </div>
                   </div>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header txt-white" id="headingTwo">
-                    <button class="accordion-button bg-blue-middle py-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div className="accordion-item">
+                  <h2 className="accordion-header txt-white" id="headingTwo">
+                    <button className="accordion-button bg-blue-middle py-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                       {values.title}
                     </button>
                   </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                  <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
                       {parse(values.text)}
                     </div>
                   </div>

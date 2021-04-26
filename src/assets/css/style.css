@@ -94,6 +94,7 @@ section { overflow: hidden;}
 .menu-item a.active:before {width: 100%;} 
 
 /* BANNERS */
+#homeBanner .gatsby-image-wrapper {min-height: 350px;}
 .carousel-control-prev-icon, 
 .carousel-control-next-icon {background-color: var(--gray-dark); padding: 50px 0;}
 
@@ -133,7 +134,7 @@ section { overflow: hidden;}
 .services-list li article {background-color: var(--gray-clear);}
 .services-list li article h2 {color: var(--blue-middle); font-weight: bold; position: relative; text-transform: uppercase; text-align: center;}
 .services-list li article h2:after {background-color: var(--blue-middle); bottom: -15px; content: ""; height: 2px; left: calc(50% - 50px); position: absolute; width: 100px;}
-.services-list li article p {font-size: 1.2em; font-weight: 600; padding: 1.5rem 0 !important;}
+.services-list li article p {font-size: 1em; font-weight: 600; padding: 1.5rem 0 !important;}
 
 /* COVID SERVICES */
 .wrap_covid_services {background-color: var(--blue-middle); padding-top: 50px; padding-bottom: 50px; overflow: inherit;}
@@ -143,7 +144,8 @@ section { overflow: hidden;}
 .wrap_covid_services p {color: #fff; max-width: 500px; text-align: left;}
 .wrap_covid_services .split > div:nth-child(1) {border-right: 1px solid #fff;}
 .wrap_covid_services .link {margin-bottom: -110px; position: relative; z-index: 5;}
-.wrap_covid_services .link button {background: unset;border: unset;appearance: none;}
+.wrap_covid_services .link button {background: unset;border: unset;appearance: none; width: 100%;}
+.wrap_covid_services .link .gatsby-image-wrapper {max-width: 400px; margin: auto;}
 
 /* US */
 .mision-title, .vision-title {position: relative;}
@@ -189,3 +191,42 @@ section { overflow: hidden;}
 .form-control:focus {box-shadow: unset; border-color: var(--gray-dark);}
 .form-control.is-invalid:focus {box-shadow: unset;}
 textarea.form-control {resize: none; height: 75px !important;}
+
+/* SERVICE INTERNS */
+
+.intern_services ul {padding-left: 0;}
+.intern_services ul li {margin-bottom: 5px;}
+.intern_services ul li::before {background-color: var(--gray-dark);}
+.intern_services h2:not(.accordion-header) {text-align: left;}
+.intern_services h2:not(.accordion-header) * {color: var(--blue-middle);}
+.intern_services h2:not(.accordion-header):after {left: 0; height: 4px;}
+
+.intern_services .list_flex {--gap: 25px; display: inline-flex; counter-reset: list; flex-wrap: wrap; margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));padding-left: 0; padding-bottom: 30px; width: calc(100% + var(--gap));}
+.intern_services .list_flex li {list-style: none; margin: var(--gap) 0 0 var(--gap); min-width: 350px; width: calc(33.3% - var(--gap));}
+.intern_services .list_flex li strong {color: var(--blue-middle); display: inline-block; margin-bottom: 10px;}
+.intern_services .list_flex li:before {border-bottom: 4px solid; color: var(--blue-middle); counter-increment:list; content: "0"counter(list); display: block; font-size: 3em; font-weight: bold; margin-bottom: 20px; width: 70px;}
+
+@media screen and (max-width: 992px){
+    .wrap_pac_services > .gatsby-image-wrapper {opacity: 0.3; width: 100%;}
+    .wrap_pac_services > .container {position: relative; z-index: 3;}
+    .wrap_covid_services .split > div:nth-child(1) {border-bottom: 1px solid #fff; border-right: 0;}
+}
+@media screen and (max-width: 768px){
+    #whatsapp {display: none;}
+
+    .top-menu > div:nth-child(1) {display: none;}
+    .top-menu a {font-size: .75em}
+    .top-menu .gatsby-image-wrapper {height: 35px !important; width: 35px !important;}
+
+    #homeBanner .res-left img {object-position: 15% center !important;}
+    #homeBanner .res-right img {object-position: 85% center !important;}
+
+    .wrap_banner_intern .gatsby-image-wrapper {min-height: 350px;}
+
+    .data-contact > [class^="list"] {margin-left: 0;}
+    .data-contact {border-bottom: 1px solid var(--gray-middle); border-right: 0;}
+}
+
+@media screen and (max-width: 375px){
+    .top-menu .gatsby-image-wrapper {height: 30px !important; width: 30px !important;}
+}

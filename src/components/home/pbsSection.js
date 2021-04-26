@@ -13,7 +13,7 @@ const Pbs = () => {
                     <div className="col-12">
                         <h2 className="pb-5">Servicios PBS</h2>
                     </div>
-                    <div className="col-md-3 wow animate__fadeInRight" style={{animationDelay: `400ms`}}>
+                    <div className="col-md-6 mb-4 col-lg-3 wow animate__fadeInRight" style={{animationDelay: `400ms`}}>
                         <div className="bg-white align-items-center d-flex flex-column p-4">
                             <strong className="txt-blue-dark d-block text-center fs-6 mb-2">Ambulancia las 24 horas</strong>
                             <Img fixed={data.pbs1.childImageSharp.fixed} />
@@ -21,7 +21,7 @@ const Pbs = () => {
                             <span>Ver más +</span>
                         </div>
                     </div>
-                    <div className="col-md-3 wow animate__fadeInRight" style={{animationDelay: `600ms`}}>
+                    <div className="col-md-6 mb-4 col-lg-3 wow animate__fadeInRight" style={{animationDelay: `600ms`}}>
                         <div className="bg-white align-items-center d-flex flex-column p-4">
                             <strong className="txt-blue-dark d-block text-center fs-6 mb-2">Consulta médica domiciliaria</strong>
                             <Img fixed={data.pbs2.childImageSharp.fixed} />
@@ -29,7 +29,7 @@ const Pbs = () => {
                             <span>Ver más +</span>
                         </div>
                     </div>
-                    <div className="col-md-3 wow animate__fadeInRight" style={{animationDelay: `800ms`}}>
+                    <div className="col-md-6 mb-4 col-lg-3 wow animate__fadeInRight" style={{animationDelay: `800ms`}}>
                         <div className="bg-white align-items-center d-flex flex-column p-4">
                             <strong className="txt-blue-dark d-block text-center fs-6 mb-2">Asistencia a urgencias médicas</strong>
                             <Img fixed={data.pbs3.childImageSharp.fixed} />
@@ -37,7 +37,7 @@ const Pbs = () => {
                             <span>Ver más +</span>
                         </div>
                     </div>
-                    <div className="col-md-3 wow animate__fadeInRight" style={{animationDelay: `1000ms`}}>
+                    <div className="col-md-6 mb-4 col-lg-3 wow animate__fadeInRight" style={{animationDelay: `1000ms`}}>
                         <div className="bg-white align-items-center d-flex flex-column p-4">
                             <strong className="txt-blue-dark d-block text-center fs-6 mb-2">Enfermería</strong>
                             <Img fixed={data.pbs4.childImageSharp.fixed} />
