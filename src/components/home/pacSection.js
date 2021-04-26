@@ -11,7 +11,7 @@ const Pac = () => {
             <Img className="wow animate__fadeInLeft" fluid={data.banner.childImageSharp.fluid} alt="Plan de atención Complementaria"/>
             <div className="container">
                 <div className="row justify-content-end">
-                    <div className="col-md-6 py-5 px-5">
+                    <div className="col-lg-6 py-5 px-5">
                         <Img  className="wow animate__fadeInRight" fixed={data.logoPac.childImageSharp.fixed} alt="Plan de atención Complementaria" />
                         <p className="mt-2 mb-4 wow animate__fadeInRight">El Plan de Atención Complementaria (PAC); garantiza la atención integral para ti y los que más quieres, con una amplia red medica de especialistas, mayor cobertura y atención preferencial.</p>
                         <div className="container mb-3">

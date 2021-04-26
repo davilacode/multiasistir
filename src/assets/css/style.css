@@ -94,6 +94,7 @@ section { overflow: hidden;}
 .menu-item a.active:before {width: 100%;} 
 
 /* BANNERS */
+#homeBanner .gatsby-image-wrapper {min-height: 350px;}
 .carousel-control-prev-icon, 
 .carousel-control-next-icon {background-color: var(--gray-dark); padding: 50px 0;}
 
@@ -203,3 +204,22 @@ textarea.form-control {resize: none; height: 75px !important;}
 .intern_services .list_flex li {list-style: none; margin: var(--gap) 0 0 var(--gap); min-width: 350px; width: calc(33.3% - var(--gap));}
 .intern_services .list_flex li strong {color: var(--blue-middle); display: inline-block; margin-bottom: 10px;}
 .intern_services .list_flex li:before {border-bottom: 4px solid; color: var(--blue-middle); counter-increment:list; content: "0"counter(list); display: block; font-size: 3em; font-weight: bold; margin-bottom: 20px; width: 70px;}
+
+@media screen and (max-width: 992px){
+    .wrap_pac_services > .gatsby-image-wrapper {opacity: 0.3; width: 100%;}
+    .wrap_pac_services > .container {position: relative; z-index: 3;}
+}
+@media screen and (max-width: 768px){
+    #whatsapp {display: none;}
+
+    .top-menu > div:nth-child(1) {display: none;}
+    .top-menu a {font-size: .75em}
+    .top-menu .gatsby-image-wrapper {height: 35px !important; width: 35px !important;}
+
+    #homeBanner .res-left img {object-position: 15% center !important;}
+    #homeBanner .res-right img {object-position: 85% center !important;}
+}
+
+@media screen and (max-width: 375px){
+    .top-menu .gatsby-image-wrapper {height: 30px !important; width: 30px !important;}
+}

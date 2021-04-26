@@ -16,7 +16,7 @@ const Services = ({ data }) => {
                             fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid
                         }
                         return (
-                            <a className="col-md-4 wow animate__fadeInUp" key={service.id} href={service.uri} title={service.title} style={{animationDelay: `${index * 200 + 200}ms`}}> 
+                            <a className="col-md-6 col-lg-4 wow animate__fadeInUp" key={service.id} href={service.uri} title={service.title} style={{animationDelay: `${index * 200 + 200}ms`}}> 
                                 <div className="align-items-center d-flex flex-column justify-content-between">
                                     <div>
                                         {featuredImage?.fluid && 
