@@ -21,7 +21,7 @@ const Contact = ({ data: { contact } }) => {
       <TitleIntern title={contact.title} image={featuredImage?.fluid} />
       <div className="wrap_content container">
         <div className="row py-5">
-          <div className="col-md-5 data-contact">
+          <div className="col-md-5 pb-4 mb-4 data-contact">
             <div className="list-phones d-flex flex-column">
               {phones.map(({phone}, i) => (
                 <a href={`tel:+57${phone.replace(/ /g, '')}`} key={i} title="Teléfono">{phone}</a>

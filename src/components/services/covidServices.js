@@ -16,15 +16,17 @@ const CovidServices = () => {
                     </div>
                 </div>
                 <div className="row split">
-                    <div className="align-items-center col-md-6 d-flex flex-column justify-content-between">
-                        <div className="text-center">
-                            <Img fixed={data.covid1.childImageSharp.fixed} />
-                            <h3 className="mb-5">Plan de hospitalización <br/> de 10 días</h3>
-                            <p>Servicio de asistencia y manejo médico al paciente con diagnóstico positivo para Covid - 19, evitando la complicación, deterioro y la consecuente hospitalización en centro asistencial. Evolución médica, Seguimiento permanente, Terapia respiratoria, etc.</p>
-                        </div>
-                        <Img fixed={data.iconPlus.childImageSharp.fixed} />
+                    <div className="align-items-center col-md-6 py-4 d-flex flex-column justify-content-between">
+                        <a href="/servicios/plan-hospitalizacion-10-dias/" className="text-center">
+                            <div className="text-center">
+                                <Img fixed={data.covid1.childImageSharp.fixed} />
+                                <h3 className="mb-5">Plan de hospitalización <br/> de 10 días</h3>
+                                <p>Servicio de asistencia y manejo médico al paciente con diagnóstico positivo para Covid - 19, evitando la complicación, deterioro y la consecuente hospitalización en centro asistencial. Evolución médica, Seguimiento permanente, Terapia respiratoria, etc.</p>
+                            </div>
+                            <Img fixed={data.iconPlus.childImageSharp.fixed} />
+                        </a>
                     </div>
-                    <div className="align-items-center col-md-6 d-flex flex-column justify-content-between">
+                    <div className="align-items-center col-md-6 py-4 d-flex flex-column justify-content-between">
                         <div className="text-center">
                             <Img fixed={data.covid2.childImageSharp.fixed} />
                             <h3 className="mb-5">Servicio de <br/>transporte</h3>
@@ -36,12 +38,12 @@ const CovidServices = () => {
                 <div className="row link">
                     <div className="col-md-6 text-center">
                         <a href={PdfFile} download title="Manual del usuario Multiasistir">
-                            <Img fixed={data.link1.childImageSharp.fixed} alt="Manual del usuario Multiasistir"/>
+                            <Img fluid={data.link1.childImageSharp.fluid} alt="Manual del usuario Multiasistir"/>
                         </a>
                     </div>
                     <div className="col-md-6 text-center">
                         <button data-bs-toggle="modal" data-bs-target="#ModalExamAgenda">
-                            <Img fixed={data.link2.childImageSharp.fixed} alt="Agendar exámenes de laboratorio"/>
+                            <Img fluid={data.link2.childImageSharp.fluid} alt="Agendar exámenes de laboratorio"/>
                         </button>
                     </div>
                 </div>
@@ -106,15 +108,15 @@ const imageQuery = graphql`
     }
     link1: file(name: {eq: "link1"}) {
         childImageSharp {
-            fixed (width: 500) {
-                ...GatsbyImageSharpFixed_noBase64
+            fluid (maxWidth: 500) {
+                ...GatsbyImageSharpFluid_noBase64
             }
         }
     }
     link2: file(name: {eq: "link2"}) {
         childImageSharp {
-            fixed (width: 500) {
-                ...GatsbyImageSharpFixed_noBase64
+            fluid (maxWidth: 500) {
+                ...GatsbyImageSharpFluid_noBase64
             }
         }
     }
