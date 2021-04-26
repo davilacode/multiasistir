@@ -189,3 +189,10 @@ section { overflow: hidden;}
 .form-control:focus {box-shadow: unset; border-color: var(--gray-dark);}
 .form-control.is-invalid:focus {box-shadow: unset;}
 textarea.form-control {resize: none; height: 75px !important;}
+
+.intern_services ul {padding-left: 0;}
+.intern_services ul li {margin-bottom: 5px;}
+.intern_services ul li::before {background-color: var(--gray-dark);}
+.intern_services h2:not(.accordion-header) {text-align: left;}
+.intern_services h2:not(.accordion-header) * {color: var(--blue-middle);}
+.intern_services h2:not(.accordion-header):after {left: 0; height: 4px;}

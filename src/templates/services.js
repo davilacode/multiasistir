@@ -44,7 +44,7 @@ const Services = ({data}) => {
                     </figure>
                     <Link className={`col-md-7 py-4 px-5 order-${index % 2 === 0 ? "2" : "1"}`} to={`${service.uri}`} itemProp="url">
                       <h2>{parse(title)}</h2>
-                      {service.content && parse(service.content)}
+                      <p>{service.ACFLeadServices?.leadList && parse(service.ACFLeadServices.leadList)}</p>
                       <span className="btn-link m-auto">Más info</span>
                     </Link>
                     
@@ -71,7 +71,9 @@ export const pageQuery = graphql`
       nodes {
         uri
         title
-        content
+        ACFLeadServices {
+          leadList
+        }
         featuredImage {
           node {
             localFile {

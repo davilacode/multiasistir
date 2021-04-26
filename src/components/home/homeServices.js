@@ -23,7 +23,7 @@ const Services = ({ data }) => {
                                             <Image fluid={featuredImage.fluid} alt={service.title}/>
                                         }
                                         <h3 className="text-center text-uppercase txt-blue-middle">{service.title}</h3>
-                                        <p>{parse(service.ACFLeadServices.text)}</p>
+                                        <p>{service.ACFLeadServices?.leadHome && parse(service.ACFLeadServices.leadHome)}</p>
                                     </div>
                                     <Image fixed={iconPlus} />
                                 </div>

@@ -37,7 +37,7 @@ export const pageQuery = graphql`
     allWpPage(filter: {parentDatabaseId: {eq: 90}}, sort: {order: ASC, fields: menuOrder}, limit: 3) {
       nodes {
         ACFLeadServices {
-          text
+          leadHome
         }
         id
         uri
