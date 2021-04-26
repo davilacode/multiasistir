@@ -190,9 +190,16 @@ section { overflow: hidden;}
 .form-control.is-invalid:focus {box-shadow: unset;}
 textarea.form-control {resize: none; height: 75px !important;}
 
+/* SERVICE INTERNS */
+
 .intern_services ul {padding-left: 0;}
 .intern_services ul li {margin-bottom: 5px;}
 .intern_services ul li::before {background-color: var(--gray-dark);}
 .intern_services h2:not(.accordion-header) {text-align: left;}
 .intern_services h2:not(.accordion-header) * {color: var(--blue-middle);}
 .intern_services h2:not(.accordion-header):after {left: 0; height: 4px;}
+
+.intern_services .list_flex {--gap: 25px; display: inline-flex; counter-reset: list; flex-wrap: wrap; margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));padding-left: 0; padding-bottom: 30px; width: calc(100% + var(--gap));}
+.intern_services .list_flex li {list-style: none; margin: var(--gap) 0 0 var(--gap); min-width: 350px; width: calc(33.3% - var(--gap));}
+.intern_services .list_flex li strong {color: var(--blue-middle); display: inline-block; margin-bottom: 10px;}
+.intern_services .list_flex li:before {border-bottom: 4px solid; color: var(--blue-middle); counter-increment:list; content: "0"counter(list); display: block; font-size: 3em; font-weight: bold; margin-bottom: 20px; width: 70px;}
