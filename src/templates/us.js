@@ -42,7 +42,7 @@ const Us = ({data}) => {
       </section>
       {videos && 
         <section className="bg-gray-clear">
-          <div className="wrap_content container py-5">
+          <div className="wrap_content container pt-5">
             <div className="row">
               <div className="col-12 pb-3">
                 <h2>Videos</h2>
@@ -51,7 +51,7 @@ const Us = ({data}) => {
                 let embedId = link.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)[1];
 
                 return (
-                  <div className="col-md-6" key={i}>
+                  <div className="col-md-6 pb-5" key={i}>
                     <iframe
                       width="100%"
                       height="480"

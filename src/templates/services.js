@@ -37,12 +37,12 @@ const Services = ({data}) => {
                     itemScope
                     itemType="http://schema.org/Article"
                   >
-                    <figure className={`col-md-5 mb-0 wow ${index % 2 === 0 ? "order-1 ps-0 animate__fadeInLeft" : "order-2 pe-0 animate__fadeInRight"}`}>
+                    <figure className={`col-lg-5 px-0 mb-0 wow ${index % 2 === 0 ? "order-lg-1 ps-0 animate__fadeInLeft" : "order-lg-2 order-md-1 pe-0 animate__fadeInRight"}`}>
                       {image &&
                         <Img className={`${index % 2 !== 0 ? "ms-auto" : ""}`} fluid={image} alt={title}/>
                       }
                     </figure>
-                    <Link className={`col-md-7 py-4 px-5 order-${index % 2 === 0 ? "2" : "1"}`} to={`${service.uri}`} itemProp="url">
+                    <Link className={`col-lg-7 py-4 px-5 ${index % 2 === 0 ? "order-lg-2" : "order-lg-1 order-md-2"}`} to={`${service.uri}`} itemProp="url">
                       <h2>{parse(title)}</h2>
                       <p>{service.ACFLeadServices?.leadList && parse(service.ACFLeadServices.leadList)}</p>
                       <span className="btn-link m-auto">Más info</span>
@@ -78,7 +78,7 @@ export const pageQuery = graphql`
           node {
             localFile {
               childImageSharp {
-                fluid (maxWidth: 350, quality: 100) {
+                fluid (maxWidth: 600, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }
