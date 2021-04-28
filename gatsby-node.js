@@ -240,7 +240,7 @@ async function createContact({ gatsbyUtilities }) {
   return await gatsbyUtilities.actions.createPage({
     path: `${wpPage.uri}`,
 
-    component: path.resolve(`./src/pages/contact.js`),
+    component: path.resolve(`./src/templates/contact.js`),
 
     context: {
       id: wpPage.id
