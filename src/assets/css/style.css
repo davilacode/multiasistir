@@ -123,7 +123,9 @@ section { overflow: hidden;}
 .wrap_covid_services .split > div:nth-child(1) {border-right: 1px solid #fff;}
 .wrap_covid_services .link {margin-bottom: -110px; position: relative; z-index: 5;}
 .wrap_covid_services .link button {background: unset;border: unset;appearance: none; width: 100%;}
-.wrap_covid_services .link .gatsby-image-wrapper {max-width: 400px; margin: auto;}
+.wrap_covid_services .link .gatsby-image-wrapper {max-width: 350px; height: 105px; margin: auto;}
+.wrap_covid_services .link .gatsby-image-wrapper img {object-position: top center !important; transition: all 0.2s ease !important;}
+.wrap_covid_services .link .gatsby-image-wrapper:hover img {object-position: center -108px !important;}
 
 /* US */
 .mision-title, .vision-title {position: relative;}

@@ -23,7 +23,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="col-md-3" >
-                        <strong>Políticas</strong>
+                        <a href={`/politicas/`} title={`Políticas`}><strong>Políticas</strong></a>
                     </div>
                     <div className="col-md-3" >
                         <strong>Nosotros</strong>
@@ -36,7 +36,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="col-md-3" >
-                        <strong>Contacto</strong>
+                        <a href={`/contacto/`} title={`Contacto`}><strong>Contacto</strong></a>
                     </div>
                 </div>
                 <div className="row align-items-center">
