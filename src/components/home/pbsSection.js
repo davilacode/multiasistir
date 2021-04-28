@@ -14,20 +14,20 @@ const Pbs = () => {
                         <h2 className="pb-5">Servicios PBS</h2>
                     </div>
                     <div className="col-md-6 mb-4 col-lg-3 wow animate__fadeInRight" style={{animationDelay: `400ms`}}>
-                        <div className="bg-white align-items-center d-flex flex-column p-4">
-                            <strong className="txt-blue-dark d-block text-center fs-6 mb-2">Ambulancia las 24 horas</strong>
+                        <a className="bg-white align-items-center d-flex flex-column p-4" href={data.ambulance.uri}>
+                            <strong className="txt-blue-dark d-block text-center fs-6 mb-2">{data.ambulance.title}</strong>
                             <Img fixed={data.pbs1.childImageSharp.fixed} />
-                            <p className="text-center">Salvamos y cuidamos vidas las 24 horas del día, con atención médica en sitio donde se necesite.</p>
+                            <p className="text-center">{data.ambulance.ACFLeadServices.leadHome}</p>
                             <span>Ver más +</span>
-                        </div>
+                        </a>
                     </div>
                     <div className="col-md-6 mb-4 col-lg-3 wow animate__fadeInRight" style={{animationDelay: `600ms`}}>
-                        <div className="bg-white align-items-center d-flex flex-column p-4">
-                            <strong className="txt-blue-dark d-block text-center fs-6 mb-2">Consulta médica domiciliaria</strong>
+                        <a className="bg-white align-items-center d-flex flex-column p-4" href={data.homeMedical.uri}>
+                            <strong className="txt-blue-dark d-block text-center fs-6 mb-2">{data.homeMedical.title}</strong>
                             <Img fixed={data.pbs2.childImageSharp.fixed} />
-                            <p className="text-center">La mayoría de los problemas de salud se pueden resolver en casa con una consulta médica.</p>
+                            <p className="text-center">{data.homeMedical.ACFLeadServices.leadHome}</p>
                             <span>Ver más +</span>
-                        </div>
+                        </a>
                     </div>
                     <div className="col-md-6 mb-4 col-lg-3 wow animate__fadeInRight" style={{animationDelay: `800ms`}}>
                         <div className="bg-white align-items-center d-flex flex-column p-4">
@@ -81,6 +81,22 @@ const imageQuery = graphql`
             fixed (width: 100) {
                 ...GatsbyImageSharpFixed_noBase64
             }
+        }
+    }
+    homeMedical: wpPage(id: {eq: "cG9zdDozMzY="}) {
+        id
+        title
+        uri
+        ACFLeadServices {
+            leadHome
+        }
+    }
+    ambulance: wpPage(id: {eq: "cG9zdDozNDE="}) {
+        id
+        title
+        uri
+        ACFLeadServices {
+            leadHome
         }
     }
   }

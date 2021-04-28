@@ -17,6 +17,7 @@ const Nav = () => {
 				}
 			}
         },
+		training
     } = useStaticQuery(query)
 
     return (
@@ -32,14 +33,13 @@ const Nav = () => {
 					{ capacitacion && 
 						capacitacion.map((link, i) => (
 							<div key={i}>
-								<a className="align-items-center d-flex " href={link.url} target={`_blank`} rel={`noreferrer noopener`} title={parse(link.label)}>
-									<Img className="me-2" fixed={link.icon.localFile.childImageSharp.fixed} alt={parse(link.label)}/>
+								<a className="align-items-center d-flex training" href={link.url} target={`_blank`} rel={`noreferrer noopener`} title={parse(link.label)}>
+									<Img className="me-2 " fluid={training.childImageSharp.fluid} alt={parse(link.label)}/>
 									<span>{parse(link.label)}</span>
 								</a>
 							</div>
 						)) 
 					}
-					
 				</div>
 			</nav>
         </header>
@@ -61,15 +61,6 @@ query LogoAndGeneralQuery {
 				capacitacion {
 					label
 					url
-					icon {
-						localFile {
-							childImageSharp {
-								fixed(width: 60) {
-									...GatsbyImageSharpFixed_noBase64
-								}
-							}
-						}
-					}
 				}
 				logo {
 					localFile {
@@ -80,6 +71,13 @@ query LogoAndGeneralQuery {
                         }
 					}
 				}
+			}
+		}
+	}
+	training: file(name: {eq: "icon-training"}) {
+		childImageSharp {
+			fluid (maxWidth:50){
+				...GatsbyImageSharpFluid_noBase64
 			}
 		}
 	}

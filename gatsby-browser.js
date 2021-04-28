@@ -1,7 +1,12 @@
 /* CSS */
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css/animate.min.css";
-import "./src/assets/css/style.css"
+import "@fontsource/montserrat/100.css"
+import "@fontsource/montserrat/300.css"
+import "@fontsource/montserrat/500.css"
+import "@fontsource/montserrat/700.css"
+import "@fontsource/montserrat/900.css"
+import "./src/assets/css/style.css";
 
 /* JS */
 import "bootstrap/dist/js/bootstrap.min.js";

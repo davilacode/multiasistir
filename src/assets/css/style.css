@@ -6,32 +6,6 @@
     March 2021
 */
 
-@font-face {
-    font-family: 'Avenir';
-    src: url(../fonts/Avenir-Black.ttf) format('truetype');
-    font-weight: 900;
-}
-@font-face {
-    font-family: 'Avenir';
-    src: url(../fonts/Avenir-Heavy.ttf) format('truetype');
-    font-weight: 700;
-}
-@font-face {
-    font-family: 'Avenir';
-    src: url(../fonts/Avenir-Regular.ttf) format('truetype');
-    font-weight: 500;
-}
-@font-face {
-    font-family: 'Avenir';
-    src: url(../fonts/Avenir-Book.ttf) format('truetype');
-    font-weight: 300;
-}
-@font-face {
-    font-family: 'Avenir';
-    src: url(../fonts/Avenir-Light.ttf) format('truetype');
-    font-weight: 100;
-}
-
 :root {
     --gray-middle: #D1CFCF;
     --gray-clear: #EFEFEF;
@@ -41,7 +15,7 @@
 }
 
 /* GENERAL */
-* {color: var(--gray-dark);}
+* {color: var(--gray-dark); font-family: "Montserrat";}
 a {text-decoration: none;}
 .btn-link {background-color: var(--blue-middle); border: 0; border-radius: 0; color: #fff; display: block; font-weight: bold; padding: 5px 25px; text-decoration: none; transition: linear all .3s; text-transform: uppercase; width: max-content;}
 .btn-link:hover {background-color: var(--gray-dark); color: #fff;}
@@ -92,6 +66,10 @@ section { overflow: hidden;}
 .menu-item a:before {background: var(--blue-middle); bottom: -8px; content: ''; height: 3px; left: 0; transition: all .3s ease-out; position: absolute; width: 0;} 
 .menu-item a:hover:before,
 .menu-item a.active:before {width: 100%;} 
+
+.training .gatsby-image-wrapper {height: 50px; width: 50px;}
+.training img {object-position: center top !important; transition: all .1s ease-in-out !important;}
+.training:hover img {object-position: center bottom !important;}
 
 /* BANNERS */
 #homeBanner .gatsby-image-wrapper {min-height: 350px;}
@@ -205,6 +183,11 @@ textarea.form-control {resize: none; height: 75px !important;}
 .intern_services .list_flex li {list-style: none; margin: var(--gap) 0 0 var(--gap); min-width: 350px; width: calc(33.3% - var(--gap));}
 .intern_services .list_flex li strong {color: var(--blue-middle); display: inline-block; margin-bottom: 10px;}
 .intern_services .list_flex li:before {border-bottom: 4px solid; color: var(--blue-middle); counter-increment:list; content: "0"counter(list); display: block; font-size: 3em; font-weight: bold; margin-bottom: 20px; width: 70px;}
+
+/* POLITICS */
+.list-politics {--gap: 25px; display: inline-flex; flex-wrap: wrap; margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));padding-left: 0; padding-bottom: 30px; width: calc(100% + var(--gap));}
+.list-politics a {align-items: center; background: #DBDDDC; display: inline-flex; flex-flow: column; margin: var(--gap) 0 0 var(--gap); min-width: 350px; padding: 30px; width: calc(33.3% - var(--gap));}
+.list-politics a h2 {font-size: 1.2em; height: 67px; padding-top: 20px;}
 
 @media screen and (max-width: 992px){
     .wrap_pac_services > .gatsby-image-wrapper {opacity: 0.3; width: 100%;}
