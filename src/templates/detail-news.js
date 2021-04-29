@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import parse from "html-react-parser"
+import Img from "gatsby-image"
 
 // We're using Gutenberg so we need the block styles
 import "@wordpress/block-library/build-style/style.css"
@@ -10,17 +11,20 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import TitleIntern from "../components/titleIntern"
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+const BlogPostTemplate = ({ data: { previous, next, post, bannerNews } }) => {
+  const bannerImage = {
+    fluid: bannerNews.childImageSharp?.fluid
+  }
+
   const featuredImage = {
-    fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-    alt: post.featuredImage?.node?.alt || ``,
+    fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid
   }
 
   return (
     <Layout>
       <SEO title={post.title} description={post.excerpt} />
-      <TitleIntern title={post.title} image={featuredImage.fluid} date={post.date} excerpt={post.excerpt} />
-      <div className="container py-5">
+      <TitleIntern title={`Noticias`} image={bannerImage.fluid} />
+      <div className="wrap_content container py-5">
         <div className="row">
           <div className="col-12">
             <article
@@ -28,8 +32,21 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
               itemScope
               itemType="http://schema.org/Article"
             >
+              <header> 
+                <div className="row">
+                  <div className="col-md-7 p-5 order-md-1 order-2">
+                    <time>{post.date}</time>
+                    <h2 className="pt-3">{post.title}</h2>
+                    {parse(post.excerpt)}
+                  </div>
+                  <div className="col-md-5 p-0 order-md-2 order-1">
+                    <Img fluid={featuredImage?.fluid} />
+                  </div>
+                </div>
+              </header>
+              
               {!!post.content && (
-                <section itemProp="articleBody">{parse(post.content)}</section>
+                <section itemProp="articleBody" className="pt-5">{parse(post.content)}</section>
               )}
 
               <hr />
@@ -114,6 +131,13 @@ export const pageQuery = graphql`
     next: wpPost(id: { eq: $nextPostId }) {
       uri
       title
+    }
+    bannerNews: file(name: {eq: "banner-intern-services"}) {
+      childImageSharp {
+        fluid (maxWidth: 1920, quality: 90){
+          ...GatsbyImageSharpFluid
+        }
+      }
     }
   }
 `

@@ -155,6 +155,16 @@ section { overflow: hidden;}
 .list-news article:hover section .excerpt-news {animation-name: fadeInUp; animation-delay: .7s;} 
 .list-news article:hover section .btn-link {animation-name: fadeInUp; animation-delay: .9s;} 
 
+/* NEWS INTERN */
+.blog-post header .row > div:nth-child(1) {background: #DBDDDC;}
+.blog-post header time {color: #222; font-weight: bold; font-size: .8em;}
+.blog-post header h2 {text-align: left !important;}
+.blog-post header h2:after {left: 0 !important;}
+.blog-post header .gatsby-image-wrapper {min-height: 300px; height: 100%;}
+
+.blog-post-nav ul li:before {display: none;}
+.blog-post-nav ul li a {color: var(--blue-dark);}
+
 /* CONTACT */
 .data-contact {border-right: 1px solid var(--gray-middle);} 
 .data-contact > [class^="list"] {padding: 20px 0 20px 65px; margin-left: auto; max-width: 300px; position: relative;} 
@@ -173,7 +183,6 @@ section { overflow: hidden;}
 textarea.form-control {resize: none; height: 75px !important;}
 
 /* SERVICE INTERNS */
-
 .intern_services ul {padding-left: 0;}
 .intern_services ul li {margin-bottom: 5px;}
 .intern_services ul li::before {background-color: var(--gray-dark);}
