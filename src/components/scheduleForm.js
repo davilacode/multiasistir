@@ -94,7 +94,7 @@ const ScheduleForm = () => {
                     {error && <p>Error...{console.log(error)}</p>}
                     {data && <p>{console.log(data)}</p>}
                     </>
-                ) 
+                )
             }}
         </Mutation>
     )
