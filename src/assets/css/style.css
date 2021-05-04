@@ -44,6 +44,9 @@ section { overflow: hidden;}
 .txt-white {color: #fff !important;}
 .txt-white > * {color: #fff !important;}
 
+.navbar-light .navbar-toggler {border: 0;}
+.navbar-toggler:focus {box-shadow: unset;}
+
 /* TOP MENU */
 .top-menu {padding-top: 10px; padding-bottom: 10px;}
 .top-menu > div {border-right: 1px solid #666666; padding: 0 15px;}
@@ -201,6 +204,10 @@ textarea.form-control {resize: none; height: 75px !important;}
 .list-politics a h2 {font-size: 1.2em; height: 67px; padding-top: 20px;}
 
 @media screen and (max-width: 992px){
+    .menu-item a {padding: 5px 0;}
+    .menu-item a:before{bottom: 0;}
+    .training {margin: 0 15px;}
+
     .wrap_pac_services > .gatsby-image-wrapper {opacity: 0.3; width: 100%;}
     .wrap_pac_services > .container {position: relative; z-index: 3;}
     .wrap_covid_services .split > div:nth-child(1) {border-bottom: 1px solid #fff; border-right: 0;}

@@ -20,26 +20,24 @@ const Nav = () => {
 		training
     } = useStaticQuery(query)
 
+	const sources = [
+		logo.mobileLogo.childImageSharp.fixed,
+		{
+		  ...logo.desktopLogo.childImageSharp.fixed,
+		  media: `(min-width: 768px)`,
+		},
+	  ]
+
     return (
         <header>  
 			<TopMenu />
-			<nav className="navbar navbar-expand-lg">
+			<nav className="navbar navbar-expand-lg navbar-light">
 				<div className="container">
-					<Link to="/" className="navbar-brand"><Img fixed={logo.localFile.childImageSharp.fixed} alt={parse(title)} /></Link>
+					<Link to="/" className="navbar-brand"><Img fixed={sources} alt={parse(title)} /></Link>
 					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primeryMenu" aria-controls="primeryMenu" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
-					<Menu />
-					{ capacitacion && 
-						capacitacion.map((link, i) => (
-							<div key={i}>
-								<a className="align-items-center d-flex training" href={link.url} target={`_blank`} rel={`noreferrer noopener`} title={parse(link.label)}>
-									<Img className="me-2 " fluid={training.childImageSharp.fluid} alt={parse(link.label)}/>
-									<span>{parse(link.label)}</span>
-								</a>
-							</div>
-						)) 
-					}
+					<Menu capacitacion={capacitacion} training={training}/>
 				</div>
 			</nav>
         </header>
@@ -63,9 +61,16 @@ query LogoAndGeneralQuery {
 					url
 				}
 				logo {
-					localFile {
+					desktopLogo: localFile {
 						childImageSharp {
                             fixed(width: 200) {
+                                ...GatsbyImageSharpFixed_noBase64
+                            }
+                        }
+					}
+					mobileLogo: localFile {
+						childImageSharp {
+                            fixed(width: 140) {
                                 ...GatsbyImageSharpFixed_noBase64
                             }
                         }

@@ -1,8 +1,10 @@
 import React from 'react'
 import { StaticQuery, graphql } from "gatsby"
-import MenuItem from "./menuItem";
+import Img from "gatsby-image"
+import parse from "html-react-parser"
+import MenuItem from "./menuItem"
 
-const Menu = () => {
+const Menu = ({capacitacion, training}) => {
 
     return(
         <div className="collapse navbar-collapse" id="primeryMenu">
@@ -26,6 +28,16 @@ const Menu = () => {
                     return null
                 }}
             />
+            { capacitacion && 
+                capacitacion.map((link, i) => (
+                    <div key={i}>
+                        <a className="align-items-center d-flex training" href={link.url} target={`_blank`} rel={`noreferrer noopener`} title={parse(link.label)}>
+                            <Img className="me-2 " fluid={training.childImageSharp.fluid} alt={parse(link.label)}/>
+                            <span>{parse(link.label)}</span>
+                        </a>
+                    </div>
+                ))
+            }
         </div>
     )
 }

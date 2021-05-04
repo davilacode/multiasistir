@@ -8,7 +8,7 @@ const MenuItem = ({ menuItem, wordPressUrl }) => {
     return (
         <li className="menu-item">
             <Link
-                className="d-flex align-items-center flex-column"
+                className="d-flex align-items-center flex-lg-column"
                 to={CreateLocalLink(menuItem, wordPressUrl)}
                 activeClassName="active"
             >
