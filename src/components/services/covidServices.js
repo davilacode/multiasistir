@@ -1,6 +1,8 @@
 import React from 'react'
 import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
+
+import ScheduleForm from "../scheduleForm"
 import PdfFile from "../../../content/assets/MANUAL DEL USUARIO MULTIASISTIR.pdf"
 
 const CovidServices = () => {
@@ -16,7 +18,17 @@ const CovidServices = () => {
                     </div>
                 </div>
                 <div className="row split">
-                    <div className="align-items-center col-md-6 py-4 d-flex flex-column justify-content-between">
+                    <div className="align-items-center col-md-4 py-4 d-flex flex-column justify-content-between">
+                        <a href="/servicios/plan-hospitalizacion-10-dias/" className="text-center">
+                            <div className="text-center">
+                                <Img fixed={data.covid3.childImageSharp.fixed} />
+                                <h3 className="mb-5">Toma de muestras<br/> COVID - 19</h3>
+                                <p>La prueba PCR es la por excelencia la prueba clínica de diagnóstico y es exigida en los aeropuertos internacionales para los viajeros. La prueba Rápida de Antígenos, es indicada para las personas que con sintomatología requieren de un diagnostico en un tiempo menor a dos horas.</p>
+                            </div>
+                            <Img fixed={data.iconPlus.childImageSharp.fixed} />
+                        </a>
+                    </div>
+                    <div className="align-items-center col-md-4 py-4 d-flex flex-column justify-content-between">
                         <a href="/servicios/plan-hospitalizacion-10-dias/" className="text-center">
                             <div className="text-center">
                                 <Img fixed={data.covid1.childImageSharp.fixed} />
@@ -26,7 +38,7 @@ const CovidServices = () => {
                             <Img fixed={data.iconPlus.childImageSharp.fixed} />
                         </a>
                     </div>
-                    <div className="align-items-center col-md-6 py-4 d-flex flex-column justify-content-between">
+                    <div className="align-items-center col-md-4 py-4 d-flex flex-column justify-content-between">
                         <div className="text-center">
                             <Img fixed={data.covid2.childImageSharp.fixed} />
                             <h3 className="mb-5">Servicio de <br/>transporte</h3>
@@ -55,23 +67,7 @@ const CovidServices = () => {
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
-                                <form>
-                                    <div className="mb-3">
-                                        <label htmlFor="FirstName" className="form-label">Nombre</label>
-                                        <input type="text" className="form-control" id="FirstName" aria-describedby="emailHelp"/>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="lastName" className="form-label">Apellido</label>
-                                        <input type="text" className="form-control" id="lastName"/>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="email" className="form-label">Correo electrónico</label>
-                                        <input type="email" className="form-control" id="email"/>
-                                    </div>
-                                    <div className="modal-footer d-flex justify-content-end pb-0 pe-0">
-                                        <button type="submit" className="btn btn-primary">Enviar</button>
-                                    </div>
-                                </form>
+                                <ScheduleForm />
                             </div>
                         </div>
                     </div>
@@ -87,14 +83,21 @@ const imageQuery = graphql`
   query covidImageQuery {
     covid1: file(name: {eq: "icon-covid-1"}) {
         childImageSharp {
-            fixed (width: 175) {
+            fixed (width: 150) {
                 ...GatsbyImageSharpFixed_noBase64
             }
         }
     }
     covid2: file(name: {eq: "icon-covid-2"}) {
         childImageSharp {
-            fixed (width: 175) {
+            fixed (width: 150) {
+                ...GatsbyImageSharpFixed_noBase64
+            }
+        }
+    }
+    covid3: file(name: {eq: "icon-covid-3"}) {
+        childImageSharp {
+            fixed (width: 150) {
                 ...GatsbyImageSharpFixed_noBase64
             }
         }
