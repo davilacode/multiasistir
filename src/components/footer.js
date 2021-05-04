@@ -12,7 +12,7 @@ const Footer = () => {
         <footer className="wrap_footer bg-gray-clear pb-4">
             <div className="container">
                 <div className="row footer-menu pb-4 mb-4">
-                    <div className="col-md-3" >
+                    <div className="col-md-3 pb-3 pb-md-0" >
                         <strong>Servicios</strong>
                         <ul>
                             {data.services && data.services.edges.map((service) =>(
@@ -22,10 +22,10 @@ const Footer = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="col-md-3" >
+                    <div className="col-md-3 pb-3 pb-md-0" >
                         <a href={`/politicas/`} title={`Políticas`}><strong>Políticas</strong></a>
                     </div>
-                    <div className="col-md-3" >
+                    <div className="col-md-3 pb-3 pb-md-0" >
                         <strong>Nosotros</strong>
                         <ul>
                             <li><a href={`/nosotros`} title={`Reseña Histórica`}>Reseña Histórica</a></li>
@@ -35,13 +35,13 @@ const Footer = () => {
                             <li><a href={`/nosotros`} title={`Valores organizacionales`}>Valores organizacionales</a></li>
                         </ul>
                     </div>
-                    <div className="col-md-3" >
+                    <div className="col-md-3 pb-3 pb-md-0" >
                         <a href={`/contacto/`} title={`Contacto`}><strong>Contacto</strong></a>
                     </div>
                 </div>
                 <div className="row align-items-center">
                     <div className="col-6">
-                        © Todos los derechos reservados {new Date().getFullYear()} Multiasistir E.A.T
+                        <p className="copyright">© Todos los derechos reservados {new Date().getFullYear()} Multiasistir E.A.T</p>
                     </div>
                     <div className="col-6">
                         <ul className="d-flex wrap-social justify-content-end">

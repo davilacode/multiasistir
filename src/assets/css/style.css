@@ -200,15 +200,18 @@ textarea.form-control {resize: none; height: 75px !important;}
 
 /* POLITICS */
 .list-politics {--gap: 25px; display: inline-flex; flex-wrap: wrap; margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));padding-left: 0; padding-bottom: 30px; width: calc(100% + var(--gap));}
-.list-politics a {align-items: center; background: #DBDDDC; display: inline-flex; flex-flow: column; margin: var(--gap) 0 0 var(--gap); min-width: 350px; padding: 30px; width: calc(33.3% - var(--gap));}
+.list-politics a {align-items: center; background: #DBDDDC; display: inline-flex; flex-flow: column; margin: var(--gap) 0 0 var(--gap); min-width: 330px; padding: 30px; width: calc(33.3% - var(--gap));}
 .list-politics a h2 {font-size: 1.2em; height: 67px; padding-top: 20px;}
+
+/* COPYRIGHT */
+.copyright {font-size: .8em;}
 
 @media screen and (max-width: 992px){
     .menu-item a {padding: 5px 0;}
     .menu-item a:before{bottom: 0;}
     .training {margin: 0 15px;}
 
-    .wrap_pac_services > .gatsby-image-wrapper {opacity: 0.3; width: 100%;}
+    .wrap_pac_services > .gatsby-image-wrapper {opacity: 0.3 !important; width: 100%;}
     .wrap_pac_services > .container {position: relative; z-index: 3;}
     .wrap_covid_services .split > div:nth-child(1) {border-bottom: 1px solid #fff; border-right: 0;}
 
@@ -239,6 +242,8 @@ textarea.form-control {resize: none; height: 75px !important;}
 
     .data-contact > [class^="list"] {margin-left: 0;}
     .data-contact {border-bottom: 1px solid var(--gray-middle); border-right: 0;}
+
+    .list-politics {justify-content: center;}
 }
 
 @media screen and (max-width: 375px){

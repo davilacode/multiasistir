@@ -11,6 +11,9 @@ const Services = ({ data }) => {
         <section className="wrap_home_services">
             <div className="container">
                 <div className="row">
+                    <div className="col-12 wrap_content">
+                        <h2>AFILIATE A NUESTROS PLANES</h2>
+                    </div>
                     {data && data.map((service, index) => {
                         let featuredImage = {
                             fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid
