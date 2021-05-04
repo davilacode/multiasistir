@@ -211,6 +211,19 @@ textarea.form-control {resize: none; height: 75px !important;}
     .wrap_pac_services > .gatsby-image-wrapper {opacity: 0.3; width: 100%;}
     .wrap_pac_services > .container {position: relative; z-index: 3;}
     .wrap_covid_services .split > div:nth-child(1) {border-bottom: 1px solid #fff; border-right: 0;}
+
+    .list-news article:hover section {animation-name: unset;}
+    .list-news article:hover header h2 {animation-name: unset;}
+    .list-news article:hover section {animation-name: unset;} 
+    .list-news article:hover section .title-news {animation-name: unset;} 
+    .list-news article:hover section .excerpt-news {animation-name: unset;} 
+    .list-news article:hover section .btn-link {animation-name: unset;} 
+    .list-news article > div {height: 100%; left: 0; position: absolute !important; top: 0; width: 100%;}
+    .list-news article section {animation-name: none; padding: 32px; position: relative;}
+    .list-news article header {display: none;}
+    .list-news article .title-news {font-size: 1.5em;}
+    .list-news article .excerpt-news {font-size: 1.1em; margin-bottom: 2em; text-align: center;} 
+    
 }
 @media screen and (max-width: 768px){
     #whatsapp {display: none;}
