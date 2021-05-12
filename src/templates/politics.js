@@ -28,8 +28,10 @@ const Politics = ({data}) => {
             <div className="list-politics">
               {allPolitics.map((politic, i) => (
                 <a key={i} href={politic?.file?.localFile?.publicURL} download>
-                  <Img fixed={icon} />
-                  <h2>{politic.title}</h2>
+                  <div>
+                    <Img fixed={icon} />
+                    <h2>{politic.title}</h2>
+                  </div>
                   <span class="btn-link m-auto">Descargar</span>
                 </a>
               ))}
