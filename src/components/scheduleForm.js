@@ -8,7 +8,6 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 const ScheduleForm = () => {
 
     const { executeRecaptcha } = useGoogleReCaptcha()
-    const RECAPTCHA_SECRET_KEY = process.env.GATSBY_RECAPTCHA_SECRET_KEY
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
 
@@ -50,7 +49,9 @@ const ScheduleForm = () => {
 
                     const result = await executeRecaptcha('contact')
                     
-                    axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${result}`, {}, {
+                    axios.post(`/.netlify/functions/recaptcha`, {
+                        result: result
+                    }, {
                         headers: {
                             "Access-Control-Allow-Origin": "*",
                             "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
