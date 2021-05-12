@@ -62,7 +62,7 @@ const ContactForm = () => {
                             sendEmail({ 
                                 variables: {
                                     clientMutationId: "contactForm",
-                                    to: "andersonfidel.14@gmail.com",
+                                    to: "siau@multiasistir.com",
                                     from: data.email,
                                     subject: `Contacto Multiasistir - ${data.name}`,
                                     body: `
