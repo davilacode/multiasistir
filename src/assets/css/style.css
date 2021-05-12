@@ -123,6 +123,7 @@ section { overflow: hidden;}
 .wrap_covid_services h3 {color: #fff; font-weight: bold; position: relative; text-align: center;}
 .wrap_covid_services h3:after {background-color: #fff; bottom: -25px; content: ""; height: 2px; left: calc(50% - 50px); position: absolute; width: 100px;}
 .wrap_covid_services p {color: #fff; max-width: 500px; text-align: left;}
+.wrap_covid_services .split {margin-bottom: 40px;}
 .wrap_covid_services .split > div {border-right: 1px solid #fff;}
 .wrap_covid_services .split > div:last-child {border-right: 0;}
 .wrap_covid_services .link {margin-bottom: -110px; position: relative; z-index: 5;}
@@ -180,7 +181,7 @@ section { overflow: hidden;}
 .data-contact > .list-address:after {background: url(../../../content/assets/icon-location.png) no-repeat center / contain;} 
 
 /* FORM */
-.form-contact {padding: 0 70px;}
+.form-contact {padding: 0 70px; position: relative;}
 .form-control {border: 0; border-bottom: 1px solid #ced4da; border-radius: 0;}
 .form-control:focus {box-shadow: unset; border-color: var(--gray-dark);}
 .form-control.is-invalid:focus {box-shadow: unset;}
@@ -201,14 +202,19 @@ textarea.form-control {resize: none; height: 75px !important;}
 
 /* POLITICS */
 .list-politics {--gap: 25px; display: inline-flex; flex-wrap: wrap; margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));padding-left: 0; padding-bottom: 30px; width: calc(100% + var(--gap));}
-.list-politics a {align-items: center; background: #DBDDDC; display: inline-flex; flex-flow: column; margin: var(--gap) 0 0 var(--gap); min-width: 330px; padding: 30px; width: calc(33.3% - var(--gap));}
-.list-politics a h2 {font-size: 1.2em; height: 67px; padding-top: 20px;}
+.list-politics a {align-items: center; background: #DBDDDC; display: inline-flex; flex-flow: column; justify-content: space-between; margin: var(--gap) 0 0 var(--gap); min-width: 330px; padding: 30px; width: calc(33.3% - var(--gap));}
+.list-politics a > div {align-items: center;display: inline-flex; flex-flow: column;}
+.list-politics a h2 {font-size: 1.2em; padding-top: 20px;}
+.list-politics a .btn-link {margin: 0 auto !important;}
 
 /* COPYRIGHT */
 .copyright {font-size: .8em;}
 
 /* MODAL TITLE */
 .modal-title {color: var(--blue-middle); font-weight: bold; text-transform: uppercase;}
+.modal-body {position: relative;}
+.form-response {align-items: center; background: rgba(255,255,255,0.7); display: none; justify-content: center; height: 100%; padding: 32px; position: absolute;left: 0;top: 0; text-align: center; width: 100%;}
+.form-response.show{display: flex;}
 
 @media screen and (max-width: 992px){
     .menu-item a {padding: 5px 0;}

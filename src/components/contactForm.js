@@ -1,11 +1,18 @@
-import React from "react"
-import { useForm } from "react-hook-form"
+import React, { useState } from "react"
 import gql from "graphql-tag"
+import axios from "axios"
+import { useForm } from "react-hook-form"
 import { Mutation } from "react-apollo"
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 
 const ContactForm = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { executeRecaptcha } = useGoogleReCaptcha()
+    const RECAPTCHA_SECRET_KEY = process.env.GATSBY_RECAPTCHA_SECRET_KEY
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+    const [validate, setValidate] = useState()
 
     const SEND_MAIL_MUTATION = gql`
         mutation SEND_EMAIL(
@@ -36,22 +43,43 @@ const ContactForm = () => {
             {(sendEmail, { loading, error, data }) => {
                 
                 const onSubmit = async (data) => {
-                    sendEmail({ 
-                        variables: {
-                            clientMutationId: "contactForm",
-                            to: "andersonfidel.14@gmail.com",
-                            from: data.email,
-                            subject: `Contacto Multiasistir - ${data.name}`,
-                            body: `
-                                <h1>Contacto Multiasistir</h1>
-                                <p><strong>Nombre:</strong> ${data.name}</p>
-                                <p><strong>Teléfono:</strong> ${data.phone}</p>
-                                <p><strong>Email:</strong> ${data.email}</p>
-                                <p><strong>Mensaje:</strong> ${data.messages}</p>
-                            `
+
+                    if (!executeRecaptcha) {
+                        return
+                    }
+
+                    const result = await executeRecaptcha('contact')
+                    
+                    axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${result}`, {}, {
+                        headers: {
+                            "Access-Control-Allow-Origin": "*",
+                            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+                        } 
+                    }
+                    ).then((response) => {
+                        if(response.data.success){
+                            sendEmail({ 
+                                variables: {
+                                    clientMutationId: "contactForm",
+                                    to: "andersonfidel.14@gmail.com",
+                                    from: data.email,
+                                    subject: `Contacto Multiasistir - ${data.name}`,
+                                    body: `
+                                        <h1>Contacto Multiasistir</h1>
+                                        <p><strong>Nombre:</strong> ${data.name}</p>
+                                        <p><strong>Teléfono:</strong> ${data.phone}</p>
+                                        <p><strong>Email:</strong> ${data.email}</p>
+                                        <p><strong>Mensaje:</strong> ${data.messages}</p>
+                                    `
+                                }
+                            })
+                            setValidate(false);
+                            reset({ name: '', phone: '', email: '', messages: '' });
+                        }else{
+                            setValidate(true);
                         }
                     })
-                    console.log(data)
+                    
                 }
 
                 return (
@@ -83,9 +111,13 @@ const ContactForm = () => {
                         </div>
                         <button type="submit" className="btn btn-primary btn-link mx-auto">Enviar</button>
                     </form>
-                    {loading && <p>Enviando...</p>}
-                    {error && <p>Error...{console.log(error)}</p>}
-                    {data && <p>{console.log(data)}</p>}
+                    <div className={`form-response ${loading || error || data ? 'show' : ''} ${error || data ? 'message' : ''}`}>
+                        {loading && <div className="spinner-grow" role="status"><span className="visually-hidden">Loading...</span></div>}
+                        {error || validate ? <div className="error"><p>Error al enviar, por favor inténtelo nuevamente.</p>{console.log(error)}</div> : ''}
+                        {data && <div className="ok">¡Gracias por escribirnos! <br /> Pronto nos pondremos en contacto.{console.log(data)}</div>}
+                        
+                    </div>
+                    <div className="d-none">{data || error || validate ? setTimeout(function(){ document.querySelector('.form-response').classList.remove("show") }, 5000) : ''}</div>
                     </>
                 )
             }}

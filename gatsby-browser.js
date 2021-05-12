@@ -17,6 +17,9 @@ import React from 'react'
 import fetch from 'cross-fetch'
 import { ApolloProvider } from 'react-apollo'
 import ApolloClient from 'apollo-boost'
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
+
+const RECPATCHA_KEY = process.env.GATSBY_RECAPTCHA_SITE_KEY
 
 const client = new ApolloClient({
     uri: `https://api.multiasistir.com/graphql`,
@@ -24,5 +27,7 @@ const client = new ApolloClient({
 })
 
 export const wrapRootElement = ({ element }) => (
-  <ApolloProvider client={client}>{element}</ApolloProvider>
+  <GoogleReCaptchaProvider reCaptchaKey={RECPATCHA_KEY}>
+    <ApolloProvider client={client}>{element}</ApolloProvider>
+  </GoogleReCaptchaProvider>
 )

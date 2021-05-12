@@ -1,11 +1,18 @@
-import React from "react"
-import { useForm } from "react-hook-form"
+import React, { useState } from "react"
 import gql from "graphql-tag"
+import axios from "axios"
+import { useForm } from "react-hook-form"
 import { Mutation } from "react-apollo"
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 
 const ScheduleForm = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { executeRecaptcha } = useGoogleReCaptcha()
+    const RECAPTCHA_SECRET_KEY = process.env.GATSBY_RECAPTCHA_SECRET_KEY
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm()
+
+    const [validate, setValidate] = useState()
 
     const SEND_MAIL_MUTATION = gql`
         mutation SEND_EMAIL(
@@ -36,20 +43,41 @@ const ScheduleForm = () => {
             {(sendEmail, { loading, error, data }) => {
                 
                 const onSubmit = async (data) => {
-                    sendEmail({ 
-                        variables: {
-                            clientMutationId: "contactForm",
-                            to: "andersonfidel.14@gmail.com",
-                            from: data.email,
-                            subject: `Agendar Exámenes de Laboratorio  Multiasistir`,
-                            body: `
-                                <h1>Agendar Exámenes de Laboratorio Multiasistir</h1>
-                                <p><strong>Paciente:</strong> ${data.name}</p>
-                                <p><strong>Nro Documento:</strong> ${data.identity}</p>
-                                <p><strong>Email:</strong> ${data.email}</p>
-                                <p><strong>Teléfono:</strong> ${data.phone}</p>
-                                <p><strong>Posible fecha y hora de atención:</strong> ${data.date}</p>
-                            `
+
+                    if (!executeRecaptcha) {
+                        return
+                    }
+
+                    const result = await executeRecaptcha('contact')
+                    
+                    axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${result}`, {}, {
+                        headers: {
+                            "Access-Control-Allow-Origin": "*",
+                            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+                        } 
+                    }
+                    ).then((response) => {
+                        if(response.data.success){
+                            sendEmail({ 
+                                variables: {
+                                    clientMutationId: "contactForm",
+                                    to: "andersonfidel.14@gmail.com",
+                                    from: data.email,
+                                    subject: `Agendar Exámenes de Laboratorio  Multiasistir`,
+                                    body: `
+                                        <h1>Agendar Exámenes de Laboratorio Multiasistir</h1>
+                                        <p><strong>Paciente:</strong> ${data.name}</p>
+                                        <p><strong>Nro Documento:</strong> ${data.identity}</p>
+                                        <p><strong>Email:</strong> ${data.email}</p>
+                                        <p><strong>Teléfono:</strong> ${data.phone}</p>
+                                        <p><strong>Posible fecha de atención:</strong> ${data.date}</p>
+                                    `
+                                }
+                            })
+                            setValidate(false);
+                            reset({ name: '', phone: '', email: '', messages: '' });
+                        }else{
+                            setValidate(true);
                         }
                     })
                 }
@@ -84,15 +112,19 @@ const ScheduleForm = () => {
                             { errors.email && errors.email.type === "pattern" && <div className="form-text">Correo no válido</div>}
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="text" className={`form-control ${errors.date ? 'is-invalid' : ''}`} id="date" placeholder="03-12-2020 10:00" {...register("date", { required: true})}/>
+                            <input type="date" className={`form-control ${errors.date ? 'is-invalid' : ''}`} id="date" placeholder="03-12-2020" {...register("date", { required: true})}/>
                             <label htmlFor="date">Posible fecha de atención</label>
                             { errors.date && errors.date.type === "required" && <div className="form-text">Campo requerido</div>}
                         </div>
                         <button type="submit" className="btn btn-primary btn-link mx-auto">Enviar</button>
                     </form>
-                    {loading && <p>Enviando...</p>}
-                    {error && <p>Error...{console.log(error)}</p>}
-                    {data && <p>{console.log(data)}</p>}
+                    <div className={`form-response ${loading || error || data ? 'show' : ''} ${error || data ? 'message' : ''}`}>
+                        {loading && <div className="spinner-grow" role="status"><span className="visually-hidden">Loading...</span></div>}
+                        {error || validate ? <div className="error"><p>Error al enviar, por favor inténtelo nuevamente.</p>{console.log(error)}</div> : ''}
+                        {data && <div className="ok">¡Gracias por escribirnos! <br /> Pronto nos pondremos en contacto.{console.log(data)}</div>}
+                        
+                    </div>
+                    <div className="d-none">{data || error || validate ? setTimeout(function(){ document.querySelector('.form-response').classList.remove("show") }, 5000) : ''}</div>
                     </>
                 )
             }}

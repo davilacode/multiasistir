@@ -19,7 +19,7 @@ const CovidServices = () => {
                 </div>
                 <div className="row split">
                     <div className="align-items-center col-md-4 py-4 d-flex flex-column justify-content-between">
-                        <a href="/servicios/plan-hospitalizacion-10-dias/" className="text-center">
+                        <a href="/servicios/toma-de-muestras-covid-19/" className="text-center">
                             <div className="text-center">
                                 <Img fixed={data.covid3.childImageSharp.fixed} />
                                 <h3 className="mb-5">Toma de muestras<br/> COVID - 19</h3>
