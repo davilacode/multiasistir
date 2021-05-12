@@ -62,7 +62,7 @@ const ScheduleForm = () => {
                             sendEmail({ 
                                 variables: {
                                     clientMutationId: "contactForm",
-                                    to: "andersonfidel.14@gmail.com",
+                                    to: "referencia@multiasistir.com",
                                     from: data.email,
                                     subject: `Agendar Exámenes de Laboratorio  Multiasistir`,
                                     body: `
