@@ -7,6 +7,12 @@
  */
 
 module.exports = {
+
+  proxy: {
+    prefix: "/recaptcha",
+    url: "https://www.google.com",
+  },
+
   //flags: { PRESERVE_WEBPACK_CACHE: true },
   /**
    * Adding plugins to this array adds them to your Gatsby site.
