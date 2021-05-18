@@ -63,7 +63,7 @@ const ContactForm = () => {
                                 variables: {
                                     clientMutationId: "contactForm",
                                     to: "siau@multiasistir.com",
-                                    from: data.email,
+                                    from: "no-reply@multiasistir.com",
                                     subject: `Contacto Multiasistir - ${data.name}`,
                                     body: `
                                         <h1>Contacto Multiasistir</h1>

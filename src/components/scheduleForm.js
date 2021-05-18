@@ -63,8 +63,8 @@ const ScheduleForm = () => {
                                 variables: {
                                     clientMutationId: "contactForm",
                                     to: "referencia@multiasistir.com",
-                                    from: data.email,
-                                    subject: `Agendar Exámenes de Laboratorio  Multiasistir`,
+                                    from: "no-reply@multiasistir.com",
+                                    subject: `Agendar Exámenes de Laboratorio - Multiasistir`,
                                     body: `
                                         <h1>Agendar Exámenes de Laboratorio Multiasistir</h1>
                                         <p><strong>Paciente:</strong> ${data.name}</p>
