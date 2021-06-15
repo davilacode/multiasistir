@@ -3,9 +3,9 @@ import { Link, graphql } from "gatsby"
 import parse from "html-react-parser"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/Seo"
 import TitleIntern from "../components/titleIntern"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const BlogIndex = ({
   data,
@@ -17,19 +17,19 @@ const BlogIndex = ({
   if (!posts.length) {
     return (
       <Layout>
-        <SEO title={intern.title} />
-        <TitleIntern title={intern.title} image={intern.featuredImage.node.localFile.childImageSharp.fluid} />
+        <Seo title={intern.title} />
+        <TitleIntern title={intern.title} image={intern.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
         <p>
           No hay contenido para mostrar
         </p>
       </Layout>
-    )
+    );
   }
 
   return (
     <Layout>
-      <SEO title={intern.title} />
-      <TitleIntern title={intern.title} image={intern.featuredImage.node.localFile.childImageSharp.fluid} />
+      <Seo title={intern.title} />
+      <TitleIntern title={intern.title} image={intern.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
       <div className="container py-5">
         <div className="row">
           <div className="col-12">
@@ -41,7 +41,8 @@ const BlogIndex = ({
                   <li key={post.uri} className="pt-5">
                     <Link to={`/noticias${post.uri}`} itemProp="url">
                       <article>
-                        <Img fluid={post?.featuredImage?.node?.localFile?.childImageSharp?.fluid} />
+                        <GatsbyImage
+                          image={post?.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData} />
                         <header>
                           <h2 className="bg-blue-middle px-4 py-3 mb-0 txt-white text-uppercase animate__animated animate__fadeInLeft">{parse(title)}</h2>
                         </header>
@@ -53,7 +54,7 @@ const BlogIndex = ({
                       </article>
                     </Link>
                   </li>
-                )
+                );
               })}
             </ul>
             {previousPagePath && (
@@ -67,52 +68,47 @@ const BlogIndex = ({
         </div>
       </div>
     </Layout>
-  )
+  );
 }
 
 export default BlogIndex
 
-export const pageQuery = graphql`
-  query WordPressPostArchive($id: String!, $offset: Int!, $postsPerPage: Int!) {
-    allWpPost(
-      sort: { fields: [date], order: DESC }
-      limit: $postsPerPage
-      skip: $offset
-    ) {
-      nodes {
-        excerpt
-        uri
-        date(formatString: "MMM DD, YYYY", locale: "es")
-        title
-        excerpt
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1920, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    intern: wpPage(id: {eq: $id}) {
-      id
+export const pageQuery = graphql`query WordPressPostArchive($id: String!, $offset: Int!, $postsPerPage: Int!) {
+  allWpPost(
+    sort: {fields: [date], order: DESC}
+    limit: $postsPerPage
+    skip: $offset
+  ) {
+    nodes {
+      excerpt
       uri
+      date(formatString: "MMM DD, YYYY", locale: "es")
       title
+      excerpt
       featuredImage {
         node {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 1920, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
             }
           }
         }
       }
     }
   }
+  intern: wpPage(id: {eq: $id}) {
+    id
+    uri
+    title
+    featuredImage {
+      node {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+}
 `

@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const Footer = () => {
 
@@ -48,8 +48,10 @@ const Footer = () => {
                             { 
                                 socialMedia.map(( social, key) => {
                                     return (
-                                        <li key={key}> <a href={social.url} target={`_blank`} rel={`noreferrer noopener`} title={social.meta} > <Img fixed={social.icon.localFile.childImageSharp.fixed} alt={social.meta} /></a></li>
-                                    )
+                                        <li key={key}> <a href={social.url} target={`_blank`} rel={`noreferrer noopener`} title={social.meta} > <GatsbyImage
+                                            image={social.icon.localFile.childImageSharp.gatsbyImageData}
+                                            alt={social.meta} /></a></li>
+                                    );
                                 }) 
                             }
                         </ul>
@@ -63,37 +65,37 @@ const Footer = () => {
 
 export default Footer
 
-const query = graphql`
-    query FooterQuery {
-        wp {
-            siteGeneralSettings {
-                ACFTopMenu {
-                socialMedia {
-                    socialNetwork {
-                    meta
-                    url
-                    icon {
-                        localFile {
-                            childImageSharp {
-                                fixed(width: 50, height: 50) {
-                                    ...GatsbyImageSharpFixed_noBase64
-                                }
-                            }
-                        }
-                    }
-                    }
+const query = graphql`query FooterQuery {
+  wp {
+    siteGeneralSettings {
+      ACFTopMenu {
+        socialMedia {
+          socialNetwork {
+            meta
+            url
+            icon {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 50, height: 50, placeholder: NONE, layout: FIXED)
                 }
-                }
+              }
             }
+          }
         }
-        services: allWpPage(filter: {parentDatabaseId: {eq: 90}}, sort: {fields: menuOrder}) {
-            edges {
-                node {
-                    id
-                    uri
-                    title
-                }
-            }
-        }
+      }
     }
+  }
+  services: allWpPage(
+    filter: {parentDatabaseId: {eq: 90}}
+    sort: {fields: menuOrder}
+  ) {
+    edges {
+      node {
+        id
+        uri
+        title
+      }
+    }
+  }
+}
 `
