@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import parse from "html-react-parser"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/Seo"
 import TitleIntern from "../components/titleIntern"
 import ContactForm from "../components/contactForm"
 
@@ -12,12 +12,12 @@ const Contact = ({ data: { contact } }) => {
   const { phones, email, address, description } = contact.ACFContact
 
   const featuredImage = {
-    fluid: contact.featuredImage?.node?.localFile?.childImageSharp?.fluid
+    fluid: contact.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData
   }
 
   return (
     <Layout>
-      <SEO title={contact.title} />
+      <Seo title={contact.title} />
       <TitleIntern title={contact.title} image={featuredImage?.fluid} />
       <div className="wrap_content container">
         <div className="row py-5">
@@ -46,34 +46,28 @@ const Contact = ({ data: { contact } }) => {
 
 export default Contact
 
-export const pageQuery = graphql`
-  query ContactById(
-    $id: String
-  ) {
-    # selecting the current service by id
-    contact: wpPage(id: { eq: $id }) {
-      id
-      content
-      title
-      featuredImage {
-        node {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1920, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+export const pageQuery = graphql`query ContactById($id: String) {
+  contact: wpPage(id: {eq: $id}) {
+    id
+    content
+    title
+    featuredImage {
+      node {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
           }
         }
       }
-      ACFContact {
-        address
-        description
-        email
-        phones {
-          phone
-        }
+    }
+    ACFContact {
+      address
+      description
+      email
+      phones {
+        phone
       }
     }
   }
+}
 `

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const TopMenu = () => {
 
@@ -20,14 +20,18 @@ const TopMenu = () => {
                         { 
                             socialMedia[0].socialNetwork.map(( social, key) => {
                                 return (
-                                    <li key={key}> <a href={social.url} target={`_blank`} rel={`noreferrer noopener`} title={social.meta} > <Img fixed={social.icon.localFile.childImageSharp.fixed} alt={social.meta} /></a></li>
+                                    <li key={key}> 
+                                        <a href={social.url} target={`_blank`} rel={`noreferrer noopener`} title={social.meta} > 
+                                            <GatsbyImage image={social.icon.localFile.childImageSharp.gatsbyImageData} alt={social.meta} />
+                                        </a>
+                                    </li>
                                 )
                             }) 
                         }
                     </ul>
                 </div>
                 <div className="d-flex align-items-center ">
-                    <Img fixed={phones[0].icon.localFile.childImageSharp.fixed} alt={phones[0].meta} />
+                    <GatsbyImage image={phones[0].icon.localFile.childImageSharp.gatsbyImageData} alt={phones[0].meta} />
                     <ul>
                         {
                             phones[0].phonesNumber.map(( item, key) => {
@@ -39,7 +43,7 @@ const TopMenu = () => {
                     </ul>
                 </div>
                 <div className="d-flex align-items-center ">
-                    <Img fixed={eMail[0].icon.localFile.childImageSharp.fixed} alt={eMail[0].meta} />
+                    <GatsbyImage image={eMail[0].icon.localFile.childImageSharp.gatsbyImageData} alt={eMail[0].meta} />
                     <ul>
                         <li><a href={`mailto:${eMail[0].eMail}`} title={eMail[0].meta}>{eMail[0].eMail}</a></li>
                     </ul>
@@ -63,9 +67,11 @@ query TopMenuQuery {
             icon {
                 localFile {
                     childImageSharp {
-                        fixed(width: 50, height: 50) {
-                            ...GatsbyImageSharpFixed_noBase64
-                        }
+                        gatsbyImageData(
+                            layout: FIXED,
+                            width: 40,
+                            placeholder: NONE
+                        )
                     }
                 }
             }
@@ -77,9 +83,11 @@ query TopMenuQuery {
             icon {
             localFile {
                 childImageSharp {
-                    fixed(width: 50, height: 50) {
-                        ...GatsbyImageSharpFixed_noBase64
-                    }
+                    gatsbyImageData(
+                        layout: FIXED,
+                        width: 40,
+                        placeholder: NONE
+                    )
                 }
             }
             }
@@ -92,9 +100,11 @@ query TopMenuQuery {
             icon {
             localFile {
                 childImageSharp {
-                    fixed(width: 50, height: 50) {
-                        ...GatsbyImageSharpFixed_noBase64
-                    }
+                    gatsbyImageData(
+                        layout: FIXED,
+                        width: 40,
+                        placeholder: NONE
+                    )
                 }
             }
             }

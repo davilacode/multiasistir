@@ -1,12 +1,12 @@
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import parse from "html-react-parser"
 
 const TitleIntern = ({ title, image, date, excerpt }) => {
 
     return (
         <section className={`wrap_banner_intern ${ date ? 'layer' : ''}`}>
-            <Img fluid={image} alt={title} />
+            <GatsbyImage image={image} alt={title} />
             <div className="content_banner">
                 <h1 className="wow animate__fadeInUp">{title}</h1>
                 {excerpt && 

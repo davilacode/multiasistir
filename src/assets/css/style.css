@@ -55,7 +55,6 @@ section { overflow: hidden;}
 .top-menu li {line-height: 1em; list-style: none;}
 .top-menu a {color: var(--blue-dark); display: inline-block; font-size: .85em; font-weight: 900; transition: all linear .3s;}
 .top-menu a:hover {opacity: 0.7;}
-.top-menu img {height: 35px; object-fit: cover; width: 40px;}
 
 /* MAIN MENU */
 .menu-item {margin: 0 15px;} 
@@ -124,6 +123,7 @@ section { overflow: hidden;}
 .wrap_covid_services h3:after {background-color: #fff; bottom: -25px; content: ""; height: 2px; left: calc(50% - 50px); position: absolute; width: 100px;}
 .wrap_covid_services p {color: #fff; max-width: 500px; text-align: left;}
 .wrap_covid_services .split {margin-bottom: 40px;}
+.wrap_covid_services .split .gatsby-image-wrapper {margin: auto}
 .wrap_covid_services .split > div {border-right: 1px solid #fff;}
 .wrap_covid_services .split > div:last-child {border-right: 0;}
 .wrap_covid_services .link {margin-bottom: -110px; position: relative; z-index: 5;}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { CreateLocalLink } from "../utils"
 import { StaticQuery, graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const MenuItem = ({ menuItem, wordPressUrl }) => {
 
@@ -15,60 +15,49 @@ const MenuItem = ({ menuItem, wordPressUrl }) => {
                 <StaticQuery 
                     query={iconQuery}
                     render={(data) => {
-                            return (
-                                <>
-                                    {data[menuItem.label.toLowerCase()]?.childImageSharp?.fluid &&
-                                        <Img fluid={data[menuItem.label.toLowerCase()].childImageSharp.fluid} alt={menuItem.label} />
-                                    }
-                                </>
-                            )
+                            return <>
+                                {data[menuItem.label.toLowerCase()]?.childImageSharp?.gatsbyImageData &&
+                                    <GatsbyImage
+                                        image={data[menuItem.label.toLowerCase()].childImageSharp.gatsbyImageData}
+                                        alt={menuItem.label} />
+                                }
+                            </>
                         }
                     }
                 />
                 {menuItem.label}
             </Link>
-        </li> 
-    )
+        </li>
+    );
 }
 
 export default MenuItem
 
-const iconQuery = graphql`
-    query {
-        inicio: file(name: {eq: "icon-inicio"}) {
-            childImageSharp {
-                fluid (maxWidth:40){
-                    ...GatsbyImageSharpFluid_noBase64
-                }
-            }
-        }
-        servicios: file(name: {eq: "icon-servicios"}) {
-            childImageSharp {
-                fluid (maxWidth:40){
-                    ...GatsbyImageSharpFluid_noBase64
-                }
-            }
-        }
-        noticias: file(name: {eq: "icon-noticias"}) {
-            childImageSharp {
-                fluid (maxWidth:40){
-                    ...GatsbyImageSharpFluid_noBase64
-                }
-            }
-        }
-        contacto: file(name: {eq: "icon-contacto"}) {
-            childImageSharp {
-                fluid (maxWidth:40){
-                    ...GatsbyImageSharpFluid_noBase64
-                }
-            }
-        }
-        nosotros: file(name: {eq: "icon-nosotros"}) {
-            childImageSharp {
-                fluid (maxWidth:40){
-                    ...GatsbyImageSharpFluid_noBase64
-                }
-            }
-        }
+const iconQuery = graphql`{
+  inicio: file(name: {eq: "icon-inicio"}) {
+    childImageSharp {
+      gatsbyImageData(width: 40, placeholder: NONE, layout: CONSTRAINED)
     }
+  }
+  servicios: file(name: {eq: "icon-servicios"}) {
+    childImageSharp {
+      gatsbyImageData(width: 40, placeholder: NONE, layout: CONSTRAINED)
+    }
+  }
+  noticias: file(name: {eq: "icon-noticias"}) {
+    childImageSharp {
+      gatsbyImageData(width: 40, placeholder: NONE, layout: CONSTRAINED)
+    }
+  }
+  contacto: file(name: {eq: "icon-contacto"}) {
+    childImageSharp {
+      gatsbyImageData(width: 40, placeholder: NONE, layout: CONSTRAINED)
+    }
+  }
+  nosotros: file(name: {eq: "icon-nosotros"}) {
+    childImageSharp {
+      gatsbyImageData(width: 40, placeholder: NONE, layout: CONSTRAINED)
+    }
+  }
+}
 `
