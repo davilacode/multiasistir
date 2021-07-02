@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import parse from "html-react-parser"
 
 import Layout from "../components/layout"
-import Seo from "../components/Seo"
+import Seo from "../components/seo"
 import TitleIntern from "../components/titleIntern"
 
 import CovidServices from "../components/services/covidServices"

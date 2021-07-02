@@ -7,7 +7,7 @@ import "@wordpress/block-library/build-style/style.css"
 import "@wordpress/block-library/build-style/theme.css"
 
 import Layout from "../components/layout"
-import Seo from "../components/Seo"
+import Seo from "../components/seo"
 import TitleIntern from "../components/titleIntern"
 
 const Service = ({ data: { service } }) => {
