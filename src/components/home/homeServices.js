@@ -28,7 +28,7 @@ const Services = ({ data }) => {
                                         <h3 className="text-center text-uppercase txt-blue-middle">{service.title}</h3>
                                         <p>{service.ACFLeadServices?.leadHome && parse(service.ACFLeadServices.leadHome)}</p>
                                     </div>
-                                    <GatsbyImage image={iconPlus} />
+                                    <GatsbyImage image={iconPlus} alt="Icono más"/>
                                 </div>
                             </a>
                         )

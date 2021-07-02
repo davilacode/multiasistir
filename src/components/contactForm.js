@@ -49,12 +49,12 @@ const ContactForm = () => {
 
                     const result = await executeRecaptcha('contact')
                     
-                    axios.post(`/.netlify/functions/recaptcha`, {
+                    axios.post(`/api/recaptcha`, {
                         result: result
                     }, {
                         headers: {
                             "Access-Control-Allow-Origin": "*",
-                            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+                            "content-type": "application/json",
                         } 
                     }
                     ).then((response) => {
@@ -62,7 +62,7 @@ const ContactForm = () => {
                             sendEmail({ 
                                 variables: {
                                     clientMutationId: "contactForm",
-                                    to: "siau@multiasistir.com",
+                                    to: "andersonfidel.14@gmail.com",
                                     from: "no-reply@multiasistir.com",
                                     subject: `Contacto Multiasistir - ${data.name}`,
                                     body: `
