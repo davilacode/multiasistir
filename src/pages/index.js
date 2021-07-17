@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 import Banners from "../components/home/banners"
 import Services from "../components/home/homeServices"
@@ -16,7 +16,7 @@ const Home = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle} isHomePage>
-      <SEO title="Inicio" lang="es"/>
+      <Seo title="Inicio" lang="es"/>
       <Banners />
       <Services data={homeServices} />
       <Pac />
@@ -47,9 +47,7 @@ export const pageQuery = graphql`
           node {
             localFile {
               childImageSharp {
-                fluid (maxWidth: 600, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(layout: FULL_WIDTH, quality: 100)
               }
             }
           }

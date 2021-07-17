@@ -7,18 +7,18 @@ import "@wordpress/block-library/build-style/style.css"
 import "@wordpress/block-library/build-style/theme.css"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import TitleIntern from "../components/titleIntern"
 
 const Service = ({ data: { service } }) => {
 
   const featuredImage = {
-    fluid: service.ACFLeadServices?.banner?.localFile?.childImageSharp?.fluid
+    fluid: service.ACFLeadServices?.banner?.localFile?.childImageSharp?.gatsbyImageData
   }
 
   return (
     <Layout>
-      <SEO title={service.title} description={service.excerpt} />
+      <Seo title={service.title} description={service.excerpt} />
       <TitleIntern title={service.title} image={featuredImage.fluid} />
       <div className="wrap_content intern_services container py-5">
         <div className="row">
@@ -35,27 +35,20 @@ const Service = ({ data: { service } }) => {
 
 export default Service
 
-export const pageQuery = graphql`
-  query ServiceById(
-    # these variables are passed in via createPage.pageContext in gatsby-node.js
-    $id: String!
-  ) {
-    # selecting the current service by id
-    service: wpPage(id: { eq: $id }) {
-      id
-      content
-      title
-      ACFLeadServices {
-        banner {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1920, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+export const pageQuery = graphql`query ServiceById($id: String!) {
+  service: wpPage(id: {eq: $id}) {
+    id
+    content
+    title
+    ACFLeadServices {
+      banner {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
           }
         }
       }
     }
   }
+}
 `

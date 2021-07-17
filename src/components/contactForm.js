@@ -49,12 +49,12 @@ const ContactForm = () => {
 
                     const result = await executeRecaptcha('contact')
                     
-                    axios.post(`/.netlify/functions/recaptcha`, {
+                    axios.post(`/api/recaptcha`, {
                         result: result
                     }, {
                         headers: {
                             "Access-Control-Allow-Origin": "*",
-                            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+                            "content-type": "application/json",
                         } 
                     }
                     ).then((response) => {

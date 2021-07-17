@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const Banners = () => {
 
@@ -18,7 +18,7 @@ const Banners = () => {
                 <div className="carousel-inner">
                     { bannersHome && bannersHome.map((banner, i) => (
                         <div className={`carousel-item ${i === 0 ? 'active' : ''}`} key={i}>
-                            <Img fluid={banner.image.localFile.childImageSharp.fluid} className={`d-block w-100 res-${banner.textAlign}`} alt={banner.title} />
+                            <GatsbyImage image={banner.image.localFile.childImageSharp.gatsbyImageData} className={`d-block w-100 res-${banner.textAlign}`} alt={banner.title} />
                         </div>
                     ))}
                 </div>
@@ -51,9 +51,10 @@ const query = graphql`
                 image {
                     localFile {
                         childImageSharp {
-                            fluid(maxWidth: 1920, quality: 100) {
-                                ...GatsbyImageSharpFluid
-                            }
+                            gatsbyImageData(
+                                layout: FULL_WIDTH,
+                                quality: 100
+                            )
                         }
                     }
                 }

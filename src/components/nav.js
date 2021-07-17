@@ -3,7 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import TopMenu from "./topMenu"
 import Menu from "./menu"
 import parse from "html-react-parser"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const Nav = () => {
 
@@ -20,20 +20,12 @@ const Nav = () => {
 		training
     } = useStaticQuery(query)
 
-	const sources = [
-		logo.mobileLogo.childImageSharp.fixed,
-		{
-		  ...logo.desktopLogo.childImageSharp.fixed,
-		  media: `(min-width: 768px)`,
-		},
-	  ]
-
     return (
         <header>  
 			<TopMenu />
 			<nav className="navbar navbar-expand-lg navbar-light">
 				<div className="container">
-					<Link to="/" className="navbar-brand"><Img fixed={sources} alt={parse(title)} /></Link>
+					<Link to="/" className="navbar-brand"><GatsbyImage image={logo.desktopLogo.childImageSharp.gatsbyImageData} alt={parse(title)} /></Link>
 					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primeryMenu" aria-controls="primeryMenu" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
@@ -47,43 +39,37 @@ const Nav = () => {
 
 export default Nav
 
-const query = graphql`
-query LogoAndGeneralQuery {
-	wp {
-		generalSettings {
-			title
-			description
-		}
-		siteGeneralSettings {
-			ACFGeneral {
-				capacitacion {
-					label
-					url
-				}
-				logo {
-					desktopLogo: localFile {
-						childImageSharp {
-                            fixed(width: 200) {
-                                ...GatsbyImageSharpFixed_noBase64
-                            }
-                        }
-					}
-					mobileLogo: localFile {
-						childImageSharp {
-                            fixed(width: 140) {
-                                ...GatsbyImageSharpFixed_noBase64
-                            }
-                        }
-					}
-				}
-			}
-		}
-	}
-	training: file(name: {eq: "icon-training"}) {
-		childImageSharp {
-			fluid (maxWidth:50){
-				...GatsbyImageSharpFluid_noBase64
-			}
-		}
-	}
-}`
+const query = graphql`query LogoAndGeneralQuery {
+  wp {
+    generalSettings {
+      title
+      description
+    }
+    siteGeneralSettings {
+      ACFGeneral {
+        capacitacion {
+          label
+          url
+        }
+        logo {
+          desktopLogo: localFile {
+            childImageSharp {
+              gatsbyImageData(width: 200, placeholder: NONE, layout: FIXED)
+            }
+          }
+          mobileLogo: localFile {
+            childImageSharp {
+              gatsbyImageData(width: 140, placeholder: NONE, layout: FIXED)
+            }
+          }
+        }
+      }
+    }
+  }
+  training: file(name: {eq: "icon-training"}) {
+    childImageSharp {
+      gatsbyImageData(width: 50, placeholder: NONE, layout: CONSTRAINED)
+    }
+  }
+}
+`
