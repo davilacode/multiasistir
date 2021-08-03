@@ -6,34 +6,33 @@ const Pac = () => {
     
     const data = useStaticQuery(imageQuery);
 
+    const pacSection = data.wpPage.ACFLeadServices;
+    const logoPac = data.logoPac.childImageSharp.gatsbyImageData;
+
     return (
         <section className="wrap_pac_services">
             <GatsbyImage
-                image={data.banner.childImageSharp.gatsbyImageData}
+                image={pacSection.imageLead.localFile.childImageSharp.gatsbyImageData}
                 className="wow animate__fadeInLeft"
                 alt="Plan de atención Complementaria" />
             <div className="container">
                 <div className="row justify-content-end">
                     <div className="col-lg-6 py-5 px-5">
                         <GatsbyImage
-                            image={data.logoPac.childImageSharp.gatsbyImageData}
+                            image={logoPac}
                             className="wow animate__fadeInRight"
                             alt="Plan de atención Complementaria" />
-                        <p className="mt-2 mb-4 wow animate__fadeInRight">El Plan de Atención Complementaria (PAC); garantiza la atención integral para ti y los que más quieres, con una amplia red medica de especialistas, mayor cobertura y atención preferencial.</p>
+                        <p className="mt-2 mb-4 wow animate__fadeInRight">{pacSection.leadHome}</p>
                         <div className="container mb-3">
                             <div className="row">
-                                <div className="align-items-center col-md-4 d-flex flex-column wow animate__fadeInRight" style={{animationDelay: `400ms`}}>
-                                    <GatsbyImage image={data.middle1.childImageSharp.gatsbyImageData} />
-                                    <strong className="d-block text-center fs-6 mt-2">Atención médica domiciliaria</strong>
-                                </div>
-                                <div className="align-items-center col-md-4 d-flex flex-column wow animate__fadeInRight" style={{animationDelay: `600ms`}}>
-                                    <GatsbyImage image={data.middle2.childImageSharp.gatsbyImageData} />
-                                    <strong className="d-block text-center fs-6 mt-2">Atención en accidentes</strong>
-                                </div>
-                                <div className="align-items-center col-md-4 d-flex flex-column wow animate__fadeInRight" style={{animationDelay: `800ms`}}>
-                                    <GatsbyImage image={data.middle3.childImageSharp.gatsbyImageData} />
-                                    <strong className="d-block text-center fs-6 mt-2">Ambulancia las 24 horas</strong>
-                                </div>
+                                {pacSection?.icons?.map(({icon, label}) => {
+                                  return (
+                                    <div className="align-items-center col-md-4 d-flex flex-column wow animate__fadeInRight" style={{animationDelay: `400ms`}}>
+                                      <GatsbyImage image={icon?.localFile?.childImageSharp?.gatsbyImageData} alt={label} />
+                                      <strong className="d-block text-center fs-6 mt-2">{label}</strong>
+                                    </div>
+                                  )
+                                })}
                             </div>
                         </div>  
                         <Link className="btn-link m-auto wow animate__fadeInUp" to="/servicios"  style={{animationDelay: `800ms`}}>Ver más</Link>    
@@ -46,30 +45,35 @@ const Pac = () => {
 
 export default Pac
 
-const imageQuery = graphql`query imageQuery {
-  banner: file(name: {eq: "banner-middle"}) {
-    childImageSharp {
-      gatsbyImageData(width: 960, layout: CONSTRAINED)
+const imageQuery = graphql`
+
+query pacSection {
+  wpPage(slug: {eq: "pac"}) {
+    title
+    ACFLeadServices {
+      leadHome
+      imageLead {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(width: 960, layout: CONSTRAINED)
+          }
+        }
+      }
+      icons {
+        icon {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 100, placeholder: NONE, layout: FIXED)
+            }
+          }
+        }
+        label
+      }
     }
   }
   logoPac: file(name: {eq: "logo-pac"}) {
     childImageSharp {
       gatsbyImageData(width: 300, placeholder: NONE, layout: FIXED)
-    }
-  }
-  middle1: file(name: {eq: "icon-middle-1"}) {
-    childImageSharp {
-      gatsbyImageData(width: 100, placeholder: NONE, layout: FIXED)
-    }
-  }
-  middle2: file(name: {eq: "icon-middle-2"}) {
-    childImageSharp {
-      gatsbyImageData(width: 100, placeholder: NONE, layout: FIXED)
-    }
-  }
-  middle3: file(name: {eq: "icon-middle-3"}) {
-    childImageSharp {
-      gatsbyImageData(width: 100, placeholder: NONE, layout: FIXED)
     }
   }
 }

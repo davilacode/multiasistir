@@ -92,7 +92,9 @@ section { overflow: hidden;}
 .wrap_pbs_services {background-color: var(--blue-middle); padding-top: 50px; padding-bottom: 50px;}
 .wrap_pbs_services h2 {color: #fff; font-weight: bold; text-align: center; text-transform: uppercase;}
 .wrap_pbs_services .bg-white {height: 100%;}
-.wrap_pbs_services span {color: var(--blue-middle); font-weight: bold; text-align: center; text-transform: uppercase;}
+.wrap_pbs_services .list-services {padding-bottom: calc(1.5rem + 24px) !important; position: relative;}
+.wrap_pbs_services .list-services strong {min-height: 50px;}
+.wrap_pbs_services .list-services span {bottom: 1.5rem; color: var(--blue-middle); font-weight: bold; text-align: center; text-transform: uppercase; position: absolute; z-index: 2;}
 
 /* FOOTER */
 .wrap_footer {padding-top: 100px;}
