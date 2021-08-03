@@ -25,9 +25,9 @@ const Pac = () => {
                         <p className="mt-2 mb-4 wow animate__fadeInRight">{pacSection.leadHome}</p>
                         <div className="container mb-3">
                             <div className="row">
-                                {pacSection?.icons?.map(({icon, label}) => {
+                                {pacSection?.icons?.map(({icon, label}, i) => {
                                   return (
-                                    <div className="align-items-center col-md-4 d-flex flex-column wow animate__fadeInRight" style={{animationDelay: `400ms`}}>
+                                    <div className="align-items-center col-md-4 d-flex flex-column wow animate__fadeInRight" key={i+"pac"} style={{animationDelay: `${i}00ms`}}>
                                       <GatsbyImage image={icon?.localFile?.childImageSharp?.gatsbyImageData} alt={label} />
                                       <strong className="d-block text-center fs-6 mt-2">{label}</strong>
                                     </div>
