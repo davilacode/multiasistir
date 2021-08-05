@@ -13,6 +13,7 @@ const Services = ({data}) => {
 
   const detail = data.wpPage
   const services = data.allWpPage.nodes
+  const accordionServices = detail.ACFInternServices.infoServices
 
   return (
     <Layout>
@@ -20,6 +21,49 @@ const Services = ({data}) => {
       <TitleIntern title={detail.title} image={detail.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
       <div className="wrap_content container py-5">
         <div className="row">
+          <div className="col-12">
+            <h2>Nuestros servicios habilitados</h2>
+            
+          </div>
+          <div className="col-12"> 
+            <div className="accordion" id="accordionServices">
+              { 
+                accordionServices && accordionServices.map(({title, icon, text}, i) => {
+                  return (
+                    <div className="accordion-item mb-5" key={i+title}>
+                      <h2 className="accordion-header txt-white" id={`${title}`}>
+                        <button className="accordion-button bg-blue-middle py-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${i}`} aria-expanded="false" aria-controls={`collapse${i}`}>
+                          <GatsbyImage image={icon.localFile.childImageSharp.gatsbyImageData} alt={title} className="me-4" />
+                          {title}
+                        </button>
+                      </h2>
+                      <div id={`collapse${i}`} className="accordion-collapse collapse" aria-labelledby={`${title}`} data-bs-parent="#accordionServices">
+                        <div className="accordion-body">
+                          {parse(text)}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }) 
+              }
+            </div>
+            {/* 
+            
+              
+              <div className="accordion-item">
+                <h2 className="accordion-header txt-white" id="headingTwo">
+                  <button className="accordion-button bg-blue-middle py-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    {values.title}
+                  </button>
+                </h2>
+                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div className="accordion-body">
+                    {parse(values.text)}
+                  </div>
+                </div>
+              </div>
+            </div> */}
+          </div>
           <div className="col-12">
             {parse(detail.content)}
           </div>
@@ -98,6 +142,19 @@ export const pageQuery = graphql`query ServicesQuery($id: String, $parentId: ID)
         localFile {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+    ACFInternServices {
+      infoServices {
+        title
+        text
+        icon {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 60, placeholder: NONE, layout: FIXED)
+            }
           }
         }
       }

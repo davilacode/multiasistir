@@ -40,7 +40,7 @@ const BlogPostTemplate = ({ data: { previous, next, post, bannerNews } }) => {
                     {parse(post.excerpt)}
                   </div>
                   <div className="col-md-5 p-0 order-md-2 order-1">
-                    <GatsbyImage image={featuredImage?.gatsbyImageData} />
+                    <GatsbyImage image={featuredImage?.fluid} alt={post.title} />
                   </div>
                 </div>
               </header>

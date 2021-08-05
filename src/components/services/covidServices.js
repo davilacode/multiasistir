@@ -21,30 +21,30 @@ const CovidServices = () => {
                     <div className="align-items-center col-md-4 py-4 d-flex flex-column justify-content-between">
                         <a href="/servicios/toma-de-muestras-covid-19/" className="text-center">
                             <div className="text-center">
-                                <GatsbyImage image={data.covid3.childImageSharp.gatsbyImageData} />
+                                <GatsbyImage image={data.covid3.childImageSharp.gatsbyImageData} alt="Toma de muestras COVID - 19" />
                                 <h3 className="mb-5">Toma de muestras<br/> COVID - 19</h3>
                                 <p>La prueba PCR es la por excelencia la prueba clínica de diagnóstico y es exigida en los aeropuertos internacionales para los viajeros. La prueba Rápida de Antígenos, es indicada para las personas que con sintomatología requieren de un diagnostico en un tiempo menor a dos horas.</p>
                             </div>
-                            <GatsbyImage image={data.iconPlus.childImageSharp.gatsbyImageData} />
+                            <GatsbyImage image={data.iconPlus.childImageSharp.gatsbyImageData} alt="Ver más"/>
                         </a>
                     </div>
                     <div className="align-items-center col-md-4 py-4 d-flex flex-column justify-content-between">
                         <a href="/servicios/plan-hospitalizacion-10-dias/" className="text-center">
                             <div className="text-center">
-                                <GatsbyImage image={data.covid1.childImageSharp.gatsbyImageData} />
+                                <GatsbyImage image={data.covid1.childImageSharp.gatsbyImageData} alt="Plan de hospitalización de 10 días"/>
                                 <h3 className="mb-5">Plan de hospitalización <br/> de 10 días</h3>
                                 <p>Servicio de asistencia y manejo médico al paciente con diagnóstico positivo para Covid - 19, evitando la complicación, deterioro y la consecuente hospitalización en centro asistencial. Evolución médica, Seguimiento permanente, Terapia respiratoria, etc.</p>
                             </div>
-                            <GatsbyImage image={data.iconPlus.childImageSharp.gatsbyImageData} />
+                            <GatsbyImage image={data.iconPlus.childImageSharp.gatsbyImageData} alt="Ver más"/>
                         </a>
                     </div>
                     <div className="align-items-center col-md-4 py-4 d-flex flex-column justify-content-between">
                         <div className="text-center">
-                            <GatsbyImage image={data.covid2.childImageSharp.gatsbyImageData} />
+                            <GatsbyImage image={data.covid2.childImageSharp.gatsbyImageData} alt="Servicio de transporte"/>
                             <h3 className="mb-5">Servicio de <br/>transporte</h3>
                             <p>Servicio de transporte en vehiculo convencional para transporte de pacientes y servicio de traslado en ambulancia.</p>
                         </div>
-                        <GatsbyImage image={data.iconPlus.childImageSharp.gatsbyImageData} />
+                        <GatsbyImage image={data.iconPlus.childImageSharp.gatsbyImageData} alt="Ver más"/>
                     </div>
                 </div>
                 <div className="row link">

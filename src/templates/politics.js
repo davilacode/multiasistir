@@ -29,10 +29,10 @@ const Politics = ({data}) => {
               {allPolitics.map((politic, i) => (
                 <a key={i} href={politic?.file?.localFile?.publicURL} download>
                   <div>
-                    <GatsbyImage image={icon} />
+                    <GatsbyImage image={icon} alt={`Descargar ${politic.title}`} />
                     <h2>{politic.title}</h2>
                   </div>
-                  <span class="btn-link m-auto">Descargar</span>
+                  <span className="btn-link m-auto">Descargar</span>
                 </a>
               ))}
             </div>

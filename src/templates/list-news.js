@@ -42,7 +42,7 @@ const BlogIndex = ({
                     <Link to={`/noticias${post.uri}`} itemProp="url">
                       <article>
                         <GatsbyImage
-                          image={post?.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData} />
+                          image={post?.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData} alt={title} />
                         <header>
                           <h2 className="bg-blue-middle px-4 py-3 mb-0 txt-white text-uppercase animate__animated animate__fadeInLeft">{parse(title)}</h2>
                         </header>
