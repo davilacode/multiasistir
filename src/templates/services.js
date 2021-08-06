@@ -47,22 +47,6 @@ const Services = ({data}) => {
                 }) 
               }
             </div>
-            {/* 
-            
-              
-              <div className="accordion-item">
-                <h2 className="accordion-header txt-white" id="headingTwo">
-                  <button className="accordion-button bg-blue-middle py-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    {values.title}
-                  </button>
-                </h2>
-                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                  <div className="accordion-body">
-                    {parse(values.text)}
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
           <div className="col-12">
             {parse(detail.content)}
