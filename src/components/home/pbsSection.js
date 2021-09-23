@@ -45,12 +45,13 @@ query pbsServices {
         icon {
           localFile{
             childImageSharp {
-              gatsbyImageData(width: 100, placeholder: NONE, layout: FIXED)
+              gatsbyImageData(width: 99, placeholder: NONE, layout: FIXED)
             }
           }
         }
         lead
         title
+        url
       }
       title
     }

@@ -16,6 +16,7 @@ exports.createPages = async gatsbyUtilities => {
   // Query our posts from the GraphQL server
   const posts = await getPosts(gatsbyUtilities)
   const services = await getServices(gatsbyUtilities)
+  const servicesPBS = await getServicesPBS(gatsbyUtilities)
 
   // If there are no posts in WordPress, don't do anything
   if (!posts.length) {
@@ -31,6 +32,7 @@ exports.createPages = async gatsbyUtilities => {
   // Pages
   await createServices({ gatsbyUtilities })
   await createService({ services, gatsbyUtilities })
+  await createServicePBS({ servicesPBS, gatsbyUtilities })
   await createUs({gatsbyUtilities})
   await createPolitics({gatsbyUtilities})
   await createContact({gatsbyUtilities})
@@ -274,6 +276,32 @@ const createService = async ({ services, gatsbyUtilities }) =>
     )
   )
 
+const createServicePBS = async ({ servicesPBS, gatsbyUtilities }) =>
+  Promise.all(
+    servicesPBS.map(( service ) =>
+    
+      // createPage is an action passed to createPages
+      // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+      gatsbyUtilities.actions.createPage({
+        // Use the WordPress uri as the Gatsby page path
+        // This is a good idea so that internal links and menus work 👍
+        path: `${service.uri}`,
+
+        // use the blog post template as the page component
+        component: path.resolve(`./src/templates/servicePbs.js`),
+
+        // `context` is available in the template as a prop and
+        // as a variable in GraphQL.
+        context: {
+          // we need to add the post id here
+          // so our blog post template knows which blog post
+          // the current page is (when you open it in a browser)
+          id: service.id
+        },
+      })
+    )
+  )
+
 
 /**
  * This function queries Gatsby's GraphQL server and asks for
@@ -325,6 +353,29 @@ async function getServices({ graphql, reporter }) {
   const graphqlResult = await graphql(`
     query ServicesQuery {
       allWpPage(filter: {parentId: {eq: "cG9zdDo5MA=="}}) {
+        nodes {
+          id
+          uri
+        }
+      }
+    }
+  `)
+
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your services pages`,
+      graphqlResult.errors
+    )
+    return
+  }
+
+  return graphqlResult.data.allWpPage.nodes
+}
+
+async function getServicesPBS({ graphql, reporter }) {
+  const graphqlResult = await graphql(`
+    query ServicesQuery {
+      allWpPage(filter: {parentId: {eq: "cG9zdDo1NDI="}}) {
         nodes {
           id
           uri
