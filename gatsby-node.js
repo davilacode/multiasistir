@@ -81,7 +81,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
           postsPerPage
         }
       }
-      intern: wpPage(id: {eq: "cG9zdDoyMjE="}) {
+      intern: wpPage(id: {eq: "cG9zdDozOTE="}) {
         id
         uri
       }
@@ -170,7 +170,7 @@ async function createUs({ gatsbyUtilities }) {
 
   const result = await gatsbyUtilities.graphql(`
     query UsQuery {
-      wpPage(id: {eq: "cG9zdDoxNjU="}) {
+      wpPage(id: {eq: "cG9zdDoyNDY="}) {
         id
         uri
       }
@@ -197,8 +197,8 @@ async function createUs({ gatsbyUtilities }) {
 async function createPolitics({ gatsbyUtilities }) {
 
   const result = await gatsbyUtilities.graphql(`
-    query UsQuery {
-      wpPage(id: {eq: "cG9zdDoz"}) {
+    query PoliticsQuery {
+      wpPage(id: {eq: "cG9zdDoyMTI="}) {
         id
         uri
       }
@@ -226,7 +226,7 @@ async function createContact({ gatsbyUtilities }) {
 
   const result = await gatsbyUtilities.graphql(`
     query ContactQuery {
-      wpPage(id: {eq: "cG9zdDoyMzk="}) {
+      wpPage(id: {eq: "cG9zdDoxOTM="}) {
         id
         uri
       }
@@ -375,7 +375,7 @@ async function getServices({ graphql, reporter }) {
 async function getServicesPBS({ graphql, reporter }) {
   const graphqlResult = await graphql(`
     query ServicesQuery {
-      allWpPage(filter: {parentId: {eq: "cG9zdDo1NDI="}}) {
+      allWpPage(filter: {parentId: {eq: "cG9zdDozNDY="}}) {
         nodes {
           id
           uri
