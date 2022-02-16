@@ -9,10 +9,10 @@ import TitleIntern from "../components/titleIntern"
 const Us = ({data}) => {
 
   const detail = data.wpPage
-  const mision = data.wpPage.ACFUs.additionalfields[0]
-  const vision = data.wpPage.ACFUs.additionalfields[1]
-  const principles = data.wpPage.ACFUs.additionalfields[2]
-  const values = data.wpPage.ACFUs.additionalfields[3]
+  const mision = data.wpPage.ACFUs.additionalFields[0]
+  const vision = data.wpPage.ACFUs.additionalFields[1]
+  const principles = data.wpPage.ACFUs.additionalFields[2]
+  const values = data.wpPage.ACFUs.additionalFields[3]
   const videos = data.wpPage.ACFUs.videos
 
   return (
@@ -114,7 +114,7 @@ export const pageQuery = graphql`query UsQuery($id: String) {
     title
     content
     ACFUs {
-      additionalfields {
+      additionalFields {
         text
         title
       }
