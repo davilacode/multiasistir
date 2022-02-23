@@ -38,6 +38,10 @@ section { overflow: hidden;}
 .bg-blue-dark {background-color: var(--blue-dark);}
 .bg-blue-middle {background-color: var(--blue-middle) !important;}
 
+
+.bg-gray {background-color: var(--gray-middle); padding: 10px;}
+.bg-blue {background-color: var(--blue-middle) !important; padding: 10px;}
+
 /* TEXT */
 .txt-blue-middle {color: var(--blue-middle);}
 .txt-blue-dark {color: var(--blue-dark);}
@@ -196,6 +200,13 @@ textarea.form-control {resize: none; height: 75px !important;}
 .intern_services h2:not(.accordion-header) {text-align: left;}
 .intern_services h2:not(.accordion-header) * {color: var(--blue-middle);}
 .intern_services h2:not(.accordion-header):after {left: 0; height: 4px;}
+.intern_services h2[class*=icon]:not(.accordion-header) {text-align: center;}
+.intern_services h2[class*=icon]:not(.accordion-header):after {display: none;}
+.intern_services h2[class*=icon]:not(.accordion-header) mark {padding-left: 40px;}
+.intern_services h2.icon-plus:not(.accordion-header) mark {background: url(../../../content/assets/icon-mas.png) no-repeat left center / 32px auto;}
+.intern_services h2.icon-travel:not(.accordion-header) mark {background: url(../../../content/assets/icon-maleta.png) no-repeat left center / 32px auto;}
+.intern_services h2.icon-phone:not(.accordion-header) mark {background: url(../../../content/assets/icon-telefono.png) no-repeat left center / 32px auto;}
+.intern_services hr.wp-block-separator {margin: 1.5rem auto !important; width: 100% !important;}
 
 .intern_services .list_flex {--gap: 25px; display: inline-flex; counter-reset: list; flex-wrap: wrap; margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));padding-left: 0; padding-bottom: 30px; width: calc(100% + var(--gap));}
 .intern_services .list_flex.center {justify-content: center;}
