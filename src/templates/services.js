@@ -22,8 +22,10 @@ const Services = ({data}) => {
       <div className="wrap_content container py-5">
         <div className="row">
           <div className="col-12">
+            {parse(detail.content)}
+          </div>
+          <div className="col-12">
             <h2>Nuestros servicios habilitados</h2>
-            
           </div>
           <div className="col-12"> 
             <div className="accordion" id="accordionServices">
@@ -32,7 +34,7 @@ const Services = ({data}) => {
                   return (
                     <div className="accordion-item mb-5" key={i+title}>
                       <h2 className="accordion-header txt-white" id={`${title}`}>
-                        <button className="accordion-button bg-blue-middle py-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${i}`} aria-expanded="false" aria-controls={`collapse${i}`}>
+                        <button className="accordion-button bg-blue-middle py-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${i}`} aria-expanded="false" aria-controls={`collapse${i}`}>
                           <GatsbyImage image={icon.localFile.childImageSharp.gatsbyImageData} alt={title} className="me-4" />
                           {title}
                         </button>
@@ -48,9 +50,7 @@ const Services = ({data}) => {
               }
             </div>
           </div>
-          <div className="col-12">
-            {parse(detail.content)}
-          </div>
+          
         </div>
         <div className="row pt-5">
           <ol className="services-list" style={{ listStyle: `none` }}>

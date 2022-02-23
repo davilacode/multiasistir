@@ -145,7 +145,7 @@ section { overflow: hidden;}
 .vision-title:before {background: url(../../../content/assets/icon-vision.png) no-repeat center / 100%;}
 
 .accordion .accordion-item {border-radius: 0 !important; border: 0;}
-.accordion .accordion-button {border-radius: 0 !important; font-weight: bold; font-size: 1em; text-transform: uppercase;}
+.accordion .accordion-button {border-radius: 0 !important; font-weight: bold; font-size: 1.2rem; text-transform: uppercase;}
 .accordion-button:focus {box-shadow: unset;}
 .accordion-button:not(.collapsed) {background-color: inherit;}
 .accordion-button::after {background: url(../../../content/assets/icon-arrow.png) no-repeat center / 2rem; height: 2rem; width: 2rem;}
