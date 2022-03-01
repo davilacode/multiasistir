@@ -274,3 +274,13 @@ textarea.form-control {resize: none; height: 75px !important;}
 @media screen and (max-width: 375px){
     .top-menu .gatsby-image-wrapper {height: 30px !important; width: 30px !important;}
 }
+
+.mw-600 {
+    max-width: 800px;
+    margin: auto;
+}
+.mw-600 textarea { 
+    height: 150px !important;
+    border-radius: 15px;
+    border: 1px solid #ced4da;
+}

@@ -37,6 +37,9 @@ const Footer = () => {
                     </div>
                     <div className="col-md-3 pb-3 pb-md-0" >
                         <a href={`/contacto/`} title={`Contacto`}><strong>Contacto</strong></a>
+                        <ul>
+                            <li><a href={`/trabaja-con-nosotros`} title={`Trabaja con nosotros`}>Trabaja con nosotros</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div className="row align-items-center">
