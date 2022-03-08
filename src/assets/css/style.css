@@ -284,3 +284,7 @@ textarea.form-control {resize: none; height: 75px !important;}
     border-radius: 15px;
     border: 1px solid #ced4da;
 }
+.mw-600 input[type=file] {
+    border-radius: 15px;
+    border: 1px solid #ced4da;
+}
