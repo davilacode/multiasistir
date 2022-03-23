@@ -20,10 +20,10 @@ const Banners = () => {
                         <div className={`carousel-item ${i === 0 ? 'active' : ''}`} key={i}>
                             { banner.link ? 
                                 <Link to={banner.link} target={banner.extern ? '_blank' : ''} rel="noreferrer noopener">
-                                    <GatsbyImage image={banner.image.localFile.childImageSharp.gatsbyImageData} className={`d-block w-100 res-${banner.textAlign}`} alt={banner.title} />
+                                    <GatsbyImage image={banner?.image?.localFile?.childImageSharp?.gatsbyImageData} className={`d-block w-100 res-${banner.textAlign}`} alt={banner.title} />
                                 </Link>
                             : 
-                                <GatsbyImage image={banner.image.localFile.childImageSharp.gatsbyImageData} className={`d-block w-100 res-${banner.textAlign}`} alt={banner.title} />
+                                <GatsbyImage image={banner?.image?.localFile?.childImageSharp?.gatsbyImageData} className={`d-block w-100 res-${banner.textAlign}`} alt={banner.title} />
                             }
                         </div>
                     ))}
