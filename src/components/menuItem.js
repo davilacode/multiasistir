@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 const MenuItem = ({ menuItem, wordPressUrl }) => {
 
-    const nameItem = menuItem.label.toLowerCase().replace(' ', '').replace('-', '')
+    const nameItem = menuItem.label.toLowerCase().replaceAll(' ', '').replace('-', '')
 
     return (
         <li className="menu-item">
@@ -18,6 +18,7 @@ const MenuItem = ({ menuItem, wordPressUrl }) => {
                     query={iconQuery}
                     render={(data) => {
                             return <>
+                              {console.log(nameItem)}
                                 {data[nameItem]?.childImageSharp?.gatsbyImageData &&
                                     <GatsbyImage
                                         image={data[nameItem].childImageSharp.gatsbyImageData}
@@ -62,6 +63,11 @@ const iconQuery = graphql`{
     }
   }
   nosotros: file(name: {eq: "icon-nosotros"}) {
+    childImageSharp {
+      gatsbyImageData(width: 40, placeholder: NONE, layout: CONSTRAINED)
+    }
+  }
+  trabajaconnosotros: file(name: {eq: "icon-trabaja-con-nosotros"}) {
     childImageSharp {
       gatsbyImageData(width: 40, placeholder: NONE, layout: CONSTRAINED)
     }
