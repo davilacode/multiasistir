@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 const MenuItem = ({ menuItem, wordPressUrl }) => {
 
-    const nameItem = menuItem.label.toLowerCase().replaceAll(' ', '').replace('-', '')
+    const nameItem = menuItem.label.toLowerCase().replace('-', '').replaceAll(' ', '')
 
     return (
         <li className="menu-item">
@@ -18,7 +18,6 @@ const MenuItem = ({ menuItem, wordPressUrl }) => {
                     query={iconQuery}
                     render={(data) => {
                             return <>
-                              {console.log(nameItem)}
                                 {data[nameItem]?.childImageSharp?.gatsbyImageData &&
                                     <GatsbyImage
                                         image={data[nameItem].childImageSharp.gatsbyImageData}

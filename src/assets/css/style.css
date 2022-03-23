@@ -62,7 +62,7 @@ section { overflow: hidden;}
 .top-menu a:hover {opacity: 0.7;}
 
 /* MAIN MENU */
-.menu-item {margin: 0 15px; max-width: 113px;} 
+.menu-item {margin: 0 15px; max-width: 116px;} 
 .menu-item a {color: var(--gray-dark); position: relative; text-transform: uppercase; font-size: .95rem; text-align: center; transition: all .3s linear;} 
 .menu-item a .gatsby-image-wrapper {height: 40px; width: 40px;}
 .menu-item a img {object-position: center top !important; transition: all .3s ease-out !important;}

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
@@ -7,9 +7,7 @@ const WorkWithUsForm = () => {
 
     const { executeRecaptcha } = useGoogleReCaptcha()
 
-    const { register, handleSubmit, reset, formState: { errors }, clearErrors, setValue, setError } = useForm();
-
-    const [validate, setValidate] = useState()
+    const { register, handleSubmit, formState: { errors }, clearErrors, setValue, setError } = useForm();
 
     const onSubmit = async (data) => {
 
@@ -55,8 +53,6 @@ const WorkWithUsForm = () => {
                 //         reset({ name: '', phone: '', email: '', profession: '', messages: '', file: '' });
                 //     }
                 // })
-            }else{
-                setValidate(true);
             }
         })
         
