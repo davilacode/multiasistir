@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 const MenuItem = ({ menuItem, wordPressUrl }) => {
 
-    const nameItem = menuItem.label.toLowerCase().replace('-', '').replaceAll(' ', '')
+    const nameItem = menuItem.label.toLowerCase().replace(/\s/g, '').replace('-', '')
 
     return (
         <li className="menu-item">
