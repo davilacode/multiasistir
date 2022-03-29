@@ -20,6 +20,7 @@ a {text-decoration: none;}
 .btn-link {background-color: var(--blue-middle); border: 0; border-radius: 0; color: #fff; display: block; font-weight: bold; padding: 5px 25px; text-decoration: none; transition: linear all .3s; text-transform: uppercase; width: max-content;}
 .btn-link:hover {background-color: var(--gray-dark); color: #fff;}
 #whatsapp {position: fixed;right: -16px;top: 300px; z-index: 1000;}
+#pse {position: fixed;right: -16px;top: 415px; z-index: 1000;}
 section { overflow: hidden;}
 .wrap-social {margin: 0;}
 .wrap-social li {list-style: none;}
