@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image";
+import PdfFile from "/content/assets/MANUAL DEL USUARIO MULTIASISTIR.pdf"
 
 const Footer = () => {
 
@@ -24,6 +25,9 @@ const Footer = () => {
                     </div>
                     <div className="col-md-3 pb-3 pb-md-0" >
                         <a href={`/politicas/`} title={`Políticas`}><strong>Políticas</strong></a>
+                        <ul>
+                          <li><a href={PdfFile} title={`Manual de Usuario`} target="_blank" rel="noreferrer noopener">Manual de Usuario</a></li>
+                        </ul>
                     </div>
                     <div className="col-md-3 pb-3 pb-md-0" >
                         <strong>Nosotros</strong>
